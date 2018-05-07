@@ -1,0 +1,539 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`analyzeSource analyzes members correctly 1`] = `
+Array [
+  Object {
+    "label": "depA",
+    "referencingMethods": Array [
+      "methodC",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "depB",
+    "referencingMethods": Array [
+      "methodB",
+      "methodD",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "methodC",
+    "referencingMethods": Array [
+      "methodA",
+      "methodE",
+    ],
+    "type": "privateMethod",
+  },
+  Object {
+    "label": "methodE",
+    "referencingMethods": Array [
+      "methodF",
+    ],
+    "type": "privateMethod",
+  },
+  Object {
+    "label": "methodA",
+    "referencingMethods": Array [
+      "methodB",
+    ],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "methodB",
+    "referencingMethods": Array [],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "methodD",
+    "referencingMethods": Array [],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "methodF",
+    "referencingMethods": Array [],
+    "type": "publicMethod",
+  },
+]
+`;
+
+exports[`analyzes members correctly 1`] = `
+Array [
+  Object {
+    "label": "$location",
+    "referencingMethods": Array [
+      "setActiveLocale",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "$p",
+    "referencingMethods": Array [
+      "init",
+      "publishStory",
+      "firstPublishStory",
+      "onReferenceFieldChanged",
+      "onFieldChanged",
+      "onInnerFieldChanged",
+      "onGateDependentMaskChanged",
+      "onGateFieldChanged",
+      "backwardCompatibility",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "$log",
+    "referencingMethods": Array [
+      "onSynchronousFieldChanged",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "themeChooser",
+    "referencingMethods": Array [
+      "initStoryStyles",
+      "initThemeChooser",
+      "setActiveLocale",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "pagesManager",
+    "referencingMethods": Array [
+      "initChangeStory",
+      "firstPublishStory",
+      "rePublishStory",
+      "getLayoutFeaturesForNode",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "previewService",
+    "referencingMethods": Array [
+      "initNodeChanged",
+      "loadStoryUrl",
+      "publishStory",
+      "firstPublishStory",
+      "setFixedHeader",
+      "backwardCompatibility",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "documentServicesMediator",
+    "referencingMethods": Array [
+      "initStoryStyles",
+      "init",
+      "dsSave",
+      "initHeader",
+      "backwardCompatibility",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "layoutSolver",
+    "referencingMethods": Array [
+      "initNodeChanged",
+      "initLayoutSolver",
+      "onReferenceFieldChanged",
+      "onSynchronousFieldChanged",
+      "getSegmentByNode",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "stories",
+    "referencingMethods": Array [
+      "init",
+      "loadStory",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "layoutSelectionStoreProvider",
+    "referencingMethods": Array [
+      "loadStory",
+      "setActiveLocale",
+      "setFixedHeader",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "defaultsService",
+    "referencingMethods": Array [
+      "loadStory",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "storyServices",
+    "referencingMethods": Array [
+      "initNodeChanged",
+      "init",
+      "reloadStory",
+      "loadStory",
+      "publishStory",
+      "firstPublishStory",
+      "rePublishStory",
+      "shouldRenderMobile",
+      "setActiveLocale",
+      "onReferenceFieldChanged",
+      "onFieldChanged",
+      "backwardCompatibility",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "spinnerService",
+    "referencingMethods": Array [
+      "init",
+      "saveStoryWithVisualEffects",
+      "publishConsumerStory",
+      "setActiveLocale",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "toasterService",
+    "referencingMethods": Array [
+      "saveStoryWithVisualEffects",
+      "setActiveLocale",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "VerticalDefaultValues",
+    "referencingMethods": Array [],
+    "type": "dependency",
+  },
+  Object {
+    "label": "siteLayoutLoader",
+    "referencingMethods": Array [
+      "loadLayouts",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "userService",
+    "referencingMethods": Array [
+      "loadPreview",
+      "firstPublishStory",
+      "rePublishStory",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "designPolicies",
+    "referencingMethods": Array [],
+    "type": "dependency",
+  },
+  Object {
+    "label": "visualValidationRenderer",
+    "referencingMethods": Array [
+      "publishStory",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "designPolicyService",
+    "referencingMethods": Array [],
+    "type": "dependency",
+  },
+  Object {
+    "label": "wizardCallbacksService",
+    "referencingMethods": Array [
+      "init",
+      "loadPreview",
+      "loadStory",
+      "dsSave",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "flags",
+    "referencingMethods": Array [
+      "init",
+      "publishConsumerStory",
+      "publishStory",
+      "dsSave",
+      "shouldRenderMobile",
+      "onReferenceFieldChanged",
+      "initHeader",
+      "backwardCompatibility",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "applicationEvents",
+    "referencingMethods": Array [
+      "onFieldChanged",
+      "onSynchronousFieldChanged",
+      "onInnerFieldChanged",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "tpaService",
+    "referencingMethods": Array [
+      "backwardCompatibility",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "richTextLinks",
+    "referencingMethods": Array [
+      "loadStory",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "nodeManipulationService",
+    "referencingMethods": Array [],
+    "type": "dependency",
+  },
+  Object {
+    "label": "obMonitoring",
+    "referencingMethods": Array [
+      "loadLayouts",
+      "initStoryStyles",
+      "initNodeChanged",
+      "initChangeStory",
+      "initLayoutSolver",
+      "initThemeChooser",
+      "initBackwardCompatibility",
+      "loadStoryUrl",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "modelSiteChanges",
+    "referencingMethods": Array [
+      "listenToRenderChanges",
+      "stopListeningToRenderChanges",
+    ],
+    "type": "dependency",
+  },
+  Object {
+    "label": "initStoryStyles",
+    "referencingMethods": Array [],
+    "type": "privateMethod",
+  },
+  Object {
+    "label": "initNodeChanged",
+    "referencingMethods": Array [],
+    "type": "privateMethod",
+  },
+  Object {
+    "label": "initChangeStory",
+    "referencingMethods": Array [
+      "init",
+    ],
+    "type": "privateMethod",
+  },
+  Object {
+    "label": "initLayoutSolver",
+    "referencingMethods": Array [
+      "init",
+    ],
+    "type": "privateMethod",
+  },
+  Object {
+    "label": "initThemeChooser",
+    "referencingMethods": Array [
+      "init",
+    ],
+    "type": "privateMethod",
+  },
+  Object {
+    "label": "initBackwardCompatibility",
+    "referencingMethods": Array [
+      "init",
+    ],
+    "type": "privateMethod",
+  },
+  Object {
+    "label": "loadStoryUrl",
+    "referencingMethods": Array [
+      "loadPreview",
+    ],
+    "type": "privateMethod",
+  },
+  Object {
+    "label": "shouldRenderMobile",
+    "referencingMethods": Array [
+      "publishStory",
+      "dsSave",
+    ],
+    "type": "privateMethod",
+  },
+  Object {
+    "label": "initHeader",
+    "referencingMethods": Array [
+      "init",
+    ],
+    "type": "privateMethod",
+  },
+  Object {
+    "label": "backwardCompatibility",
+    "referencingMethods": Array [
+      "initBackwardCompatibility",
+    ],
+    "type": "privateMethod",
+  },
+  Object {
+    "label": "loadLayouts",
+    "referencingMethods": Array [
+      "init",
+    ],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "init",
+    "referencingMethods": Array [
+      "initForStudio",
+      "reloadStory",
+    ],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "initForStudio",
+    "referencingMethods": Array [],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "reloadStory",
+    "referencingMethods": Array [],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "loadPreview",
+    "referencingMethods": Array [
+      "init",
+    ],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "loadStory",
+    "referencingMethods": Array [
+      "init",
+    ],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "saveStoryWithVisualEffects",
+    "referencingMethods": Array [],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "publishConsumerStory",
+    "referencingMethods": Array [],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "publishStory",
+    "referencingMethods": Array [
+      "publishConsumerStory",
+    ],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "firstPublishStory",
+    "referencingMethods": Array [
+      "publishStory",
+    ],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "rePublishStory",
+    "referencingMethods": Array [
+      "publishStory",
+    ],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "dsSave",
+    "referencingMethods": Array [
+      "firstPublishStory",
+      "rePublishStory",
+    ],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "setActiveLocale",
+    "referencingMethods": Array [],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "onReferenceFieldChanged",
+    "referencingMethods": Array [],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "onFieldChanged",
+    "referencingMethods": Array [],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "onSynchronousFieldChanged",
+    "referencingMethods": Array [],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "onInnerFieldChanged",
+    "referencingMethods": Array [
+      "onFieldChanged",
+      "onSynchronousFieldChanged",
+      "onGateDependentMaskChanged",
+      "onGateFieldChanged",
+    ],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "onGateDependentMaskChanged",
+    "referencingMethods": Array [
+      "onInnerFieldChanged",
+    ],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "onGateFieldChanged",
+    "referencingMethods": Array [
+      "onInnerFieldChanged",
+    ],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "getLayoutFeaturesForNode",
+    "referencingMethods": Array [],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "getSegmentByNode",
+    "referencingMethods": Array [
+      "getLayoutFeaturesForNode",
+    ],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "setFixedHeader",
+    "referencingMethods": Array [
+      "initHeader",
+    ],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "listenToRenderChanges",
+    "referencingMethods": Array [
+      "initForStudio",
+    ],
+    "type": "publicMethod",
+  },
+  Object {
+    "label": "stopListeningToRenderChanges",
+    "referencingMethods": Array [
+      "publishStory",
+    ],
+    "type": "publicMethod",
+  },
+]
+`;
