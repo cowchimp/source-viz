@@ -1,3 +1,6 @@
+[![Travis](https://img.shields.io/travis/cowchimp/astscout.svg)](https://travis-ci.org/cowchimp/astscout)
+
+
 # ⚜️ AST Scout
 
 AST Scout is a tool for analyzing and visualizing the relationship between a Class' public API and its implementations details (e.g. private methods, dependencies used).  
