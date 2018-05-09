@@ -32,7 +32,8 @@ export class ConfigurableMatrix extends React.Component<ConfigurableMatrixProps,
     return [
       <Controls key="controls"
                 viewConfig={this.state}
-                onChange={this.onViewConfigChange} />,
+                onChange={this.onViewConfigChange}
+                members={this.props.members} />,
       <Matrix key="matrix" {...this.getViewModel(this.props.members, this.state)} />
     ];
   }
