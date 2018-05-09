@@ -20,10 +20,20 @@ export function getReferencingMethods(node: ts.NamedDeclaration, parentClass: ts
       return acc;
     }
     const classChild = ancestors[classIndex-1];
-    if(!ts.isMethodDeclaration(classChild)) {
+    if(!ts.isMethodDeclaration(classChild) && !isFunctionProperty(classChild)) {
       return acc;
     }
     acc.add(classChild);
     return acc;
   }, new Set()));
+}
+
+function isFunctionProperty(classChild: ts.Node) {
+  if (!ts.isPropertyDeclaration(classChild)) {
+    return false;
+  }
+  if (!classChild.initializer || !ts.isArrowFunction(classChild.initializer)) {
+    return false;
+  }
+  return true;
 }
