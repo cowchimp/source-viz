@@ -5,7 +5,7 @@ export interface RowItem {
 
 interface Link {
   row: string;
-  column: string;
+  column: RowItem;
 }
 
 export interface MatrixModel {
