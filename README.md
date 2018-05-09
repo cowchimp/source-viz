@@ -3,6 +3,8 @@
 
 # ⚜️ AST Scout
 
+### [Demo](http://astscout.cowchimp.com)
+
 AST Scout is a tool for analyzing and visualizing the relationship between a Class' public API and its implementations details (e.g. private methods, dependencies used).  
 Ideally this visualization can help you spot logical split-points in a huge Class file by highlighting how one set of public methods uses completely different code than a different set.  
 To use it just paste your code and click **Analyze**.  
