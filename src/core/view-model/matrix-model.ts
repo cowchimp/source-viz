@@ -3,7 +3,7 @@ export interface RowItem {
   type: string;
 }
 
-interface Link {
+export interface Link {
   row: string;
   column: RowItem;
 }
