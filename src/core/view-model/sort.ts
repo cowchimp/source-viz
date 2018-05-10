@@ -2,7 +2,7 @@ import {jLouvain} from 'louvain';
 import * as shuffle from 'lodash.shuffle';
 import {SortType} from './view-config';
 import {MatrixModel} from './matrix-model';
-import {getSortByEmptyRowsFirstFunc} from './getSortByEmptyRowsFirstFunc';
+import {getSortByEmptyRowsLastFunc} from './getSortByEmptyRowsLastFunc';
 
 const sortFuncs = {
   [SortType.alphabetical]: sortByAlphabetical,
@@ -30,12 +30,12 @@ function sortByLouvain(model: MatrixModel) {
   const community = jLouvain().nodes(nodes).edges(edges);
   const sorted = community();
   
-  const sortyByEmptyRowsFirstFunc = getSortByEmptyRowsFirstFunc(model.rows, model.links);
+  const sortyByEmptyRowsLastFunc = getSortByEmptyRowsLastFunc(model.rows, model.links);
 
   model.rows.sort((a, b) => {
-    const sortByEmptyRowsFirstResult = sortyByEmptyRowsFirstFunc(a, b);
-    if (sortByEmptyRowsFirstResult != 0) {
-      return sortByEmptyRowsFirstResult;
+    const sortByEmptyRowsLastResult = sortyByEmptyRowsLastFunc(a, b);
+    if (sortByEmptyRowsLastResult != 0) {
+      return sortByEmptyRowsLastResult;
     }
     return sorted[a] - sorted[b];
   });

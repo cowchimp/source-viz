@@ -1,13 +1,13 @@
 import {Link} from './matrix-model';
 
-export function getSortByEmptyRowsFirstFunc(rows: string[], links: Link[]): (a: string, b: string) => number {
+export function getSortByEmptyRowsLastFunc(rows: string[], links: Link[]): (a: string, b: string) => number {
   const {emptyRows, nonEmptyRows} = splitEmptyAndNonEmptyRows(rows, links);
 
   return (a, b) => {
-    if (nonEmptyRows.includes(a) && emptyRows.includes(b)) {
+    if (emptyRows.includes(a) && nonEmptyRows.includes(b)) {
       return 1;
     }
-    if (nonEmptyRows.includes(b) && emptyRows.includes(a)) {
+    if (emptyRows.includes(b) && nonEmptyRows.includes(a)) {
       return -1;
     }
     return 0;
