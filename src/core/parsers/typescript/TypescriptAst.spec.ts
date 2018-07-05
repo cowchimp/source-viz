@@ -53,7 +53,7 @@ class Bar {
 describe('TypescriptAst', function () {
   it('returns parent correctly', function () {
     const ast = new TypescriptAst(code);
-    const myClass = ast.nodes.filter<ts.ClassDeclaration>(ts.isClassDeclaration)[0];
+    const myClass = ast.nodes.find< ts.ClassDeclaration>(ts.isClassDeclaration);
     const methodA = myClass.members
       .filter<ts.MethodDeclaration>(ts.isMethodDeclaration)
       .find(x => ts.isIdentifier(x.name) && x.name.text == 'methodA');
