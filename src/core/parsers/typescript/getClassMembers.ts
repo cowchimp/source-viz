@@ -22,9 +22,9 @@ export function getClassMembers(myClass: ts.ClassDeclaration, ast: TypescriptAst
   function getInfos(nodes: ts.NamedDeclaration[], type: MemberType): MemberInfo[] {
     return nodes
       .map(x => ({
-        label: getName(x),
+        label: ast.getName(x),
         type: type,
-        referencingMethods: getReferencingMethods(x, myClass, ast).map(getName)
+        referencingMethods: getReferencingMethods(x, myClass, ast).map(ast.getName)
       }));
   }
 }
@@ -37,13 +37,6 @@ function getDependencies(myClass: ts.ClassDeclaration) {
   const constructorParameters = constructor.parameters;
   const privateConstructorParameters = filterByScope(constructorParameters, ts.ModifierFlags.Private);
   return privateConstructorParameters;
-}
-
-function getName(node: ts.NamedDeclaration): string {
-  if (!ts.isIdentifier(node.name)) {
-    throw new Error("must be able to parse NamedDeclaration's name");
-  }
-  return node.name.text;
 }
 
 function filterByScope<T extends ts.Node>(nodes: ReadonlyArray<T>, scope: ts.ModifierFlags): T[] {

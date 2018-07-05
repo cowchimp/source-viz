@@ -40,6 +40,13 @@ export class TypescriptAst {
     return node.getFullText(this._sourceFile);
   }
 
+  getName(node: ts.NamedDeclaration): string {
+    if (!ts.isIdentifier(node.name)) {
+      throw new Error("must be able to parse NamedDeclaration's name");
+    }
+    return node.name.text;
+  }
+
   private visit(node: ts.Node, parent: ts.Node | undefined, cb: (node: ts.Node, parent: ts.Node | undefined) => void) {
     cb(node, parent);
     ts.forEachChild(node, n => n && this.visit(n, node, cb));
