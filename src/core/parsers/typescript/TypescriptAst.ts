@@ -36,6 +36,10 @@ export class TypescriptAst {
     return this._nodeParents.get(node);
   }
 
+  getFullText(node: ts.Node): string {
+    return node.getFullText(this._sourceFile);
+  }
+
   private visit(node: ts.Node, parent: ts.Node | undefined, cb: (node: ts.Node, parent: ts.Node | undefined) => void) {
     cb(node, parent);
     ts.forEachChild(node, n => n && this.visit(n, node, cb));
