@@ -1,4 +1,7 @@
-export const example = `class Foo {
+import {AnalysisMode} from './core/view-model/view-config';
+
+export const examples = {
+  [AnalysisMode.class]: `class Foo {
   private depC;
 
   constructor(
@@ -45,4 +48,36 @@ class Bar {
   methodA() {
     console.log(this.foo.methodA());
   }
-}`;
+}`,
+  [AnalysisMode.module]: `import depA from './depA';
+import depB from './depB';
+
+const depC;
+
+export function methodA() {
+  return methodC();
+}
+
+export function methodB() {
+  console.log(methodA());
+  if (true) {
+    depB.init();
+  }
+}
+
+function methodC() {
+  return depA.init();
+}
+
+export function methodD() {
+  depB.init();
+}
+
+function methodE() {
+  return methodC();
+}
+
+export function methodF() {
+  return methodE();
+}`
+};

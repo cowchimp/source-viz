@@ -1,5 +1,10 @@
 import {MemberType} from '../types';
 
+export enum AnalysisMode {
+  class = "class",
+  module = "module"
+}
+
 export enum SortType {
   alphabetical = "alphabetical",
   random = "random",
