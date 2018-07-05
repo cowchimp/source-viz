@@ -1,4 +1,5 @@
 import {analyzeSource} from './analyzeSource';
+import {MemberType} from '../../types';
 
 const code = `class Foo {
   private depC;
@@ -53,6 +54,15 @@ describe('analyzeSource', function() {
   it('analyzes members correctly', function() {
     const result = analyzeSource(code);
 
-    expect(result).toMatchSnapshot();
+    expect(result).toEqual(expect.arrayContaining([
+      { label: 'depA', type: MemberType.dependency, referencingMethods: ['methodC'] },
+      { label: 'depB', type: MemberType.dependency, referencingMethods: ['methodB', 'methodD'] },
+      { label: 'methodA', type: MemberType.publicMethod, referencingMethods: ['methodB'] },
+      { label: 'methodB', type: MemberType.publicMethod, referencingMethods: [] },
+      { label: 'methodD', type: MemberType.publicMethod, referencingMethods: [] },
+      { label: 'methodF', type: MemberType.publicMethod, referencingMethods: [] },
+      { label: 'methodC', type: MemberType.privateMethod, referencingMethods: ['methodA', 'methodE'] },
+      { label: 'methodE', type: MemberType.privateMethod, referencingMethods: ['methodF'] },
+    ]));
   });
 });
