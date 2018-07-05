@@ -13,10 +13,11 @@ export function getClassMembers(myClass: ts.ClassDeclaration, ast: TypescriptAst
   const privateMethods = filterByScope(methods, ts.ModifierFlags.Private);
   const publicMethods = methods.filter(x => !privateMethods.includes(x));
 
-  return []
-    .concat(getInfos(dependencies, MemberType.dependency))
-    .concat(getInfos(privateMethods, MemberType.privateMethod))
-    .concat(getInfos(publicMethods, MemberType.publicMethod));
+  return [
+    ...getInfos(dependencies, MemberType.dependency),
+    ...getInfos(privateMethods, MemberType.privateMethod),
+    ...getInfos(publicMethods, MemberType.publicMethod)
+  ];
 
   function getInfos(nodes: ts.NamedDeclaration[], type: MemberType): MemberInfo[] {
     return nodes
