@@ -1,7 +1,7 @@
 import * as ts from 'typescript';
 import {getClassMembers} from './getClassMembers';
-import {TypescriptAst} from './TypescriptAst';
-import {MemberType} from '../../types';
+import {TypescriptAst} from '../TypescriptAst';
+import {MemberType} from '../../../types';
 
 describe('getClassMembers', function () {
   it('returns private constructor parameters as dependencies', function() {
@@ -15,7 +15,7 @@ describe('getClassMembers', function () {
     }`;
     const ast = new TypescriptAst(code);
     const myClass = find(ast.nodes, ts.isClassDeclaration, 'Foo');
-    const result = getClassMembers(myClass, ast);
+    const result = getClassMembers(myClass, ast).map(x => x.getMemberInfo(ast));
     expect(result).toEqual([expect.objectContaining({ label: 'propB', type: MemberType.dependency })])
   });
 
@@ -28,7 +28,7 @@ describe('getClassMembers', function () {
     }`;
     const ast = new TypescriptAst(code);
     const myClass = find(ast.nodes, ts.isClassDeclaration, 'Foo');
-    const result = getClassMembers(myClass, ast)
+    const result = getClassMembers(myClass, ast).map(x => x.getMemberInfo(ast))
       .filter(x => x.type == MemberType.privateMethod)
       .map(x => x.label);
     expect(result).toEqual(['methodA']);
@@ -43,7 +43,7 @@ describe('getClassMembers', function () {
     }`;
     const ast = new TypescriptAst(code);
     const myClass = find(ast.nodes, ts.isClassDeclaration, 'Foo');
-    const result = getClassMembers(myClass, ast)
+    const result = getClassMembers(myClass, ast).map(x => x.getMemberInfo(ast))
       .filter(x => x.type == MemberType.publicMethod)
       .map(x => x.label);
     expect(result).toEqual(['methodB', 'methodC', 'methodD']);
@@ -58,7 +58,7 @@ describe('getClassMembers', function () {
     }`;
     const ast = new TypescriptAst(code);
     const myClass = find(ast.nodes, ts.isClassDeclaration, 'Foo');
-    const result = getClassMembers(myClass, ast);
+    const result = getClassMembers(myClass, ast).map(x => x.getMemberInfo(ast));
     expect(result).toEqual([
       expect.objectContaining({ label: 'methodA', type: MemberType.privateMethod }),
       expect.objectContaining({ label: 'methodB', type: MemberType.privateMethod }),

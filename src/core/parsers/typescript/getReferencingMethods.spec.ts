@@ -1,6 +1,8 @@
 import * as ts from 'typescript';
 import {getReferencingMethods} from './getReferencingMethods';
 import {TypescriptAst} from './TypescriptAst';
+import {TypescriptMember} from './TypescriptMember';
+import {MemberType} from '../../types';
 
 const code = `class Foo {
   constructor(
@@ -11,65 +13,36 @@ const code = `class Foo {
     if(isTheresSomethingStrangeInYourNeighborhood()) {
       this.ghostBusters.call();
     }
-    
+
     if(isTheresSomethingWeirdAndItDontLookGood()) {
-      this.ghostBusters.call();    
+      this.ghostBusters.call();
     }
   }
-  
+
   public handleGhostsIfNeeded() {
     this.callGhostBustersIfNeeded();
   }
-}
-
-public class Bar {
-  constructor(
-    private foo: Foo
-  ) {}
-
-  methodA() {
-    console.log(this.foo.handleGhostsIfNeeded());
-  }
-  
-  public functionA = () => {
-    const num = Math.floor(Math.random() * 1000);
-    if (num % 2 == 0) {
-      this.methodA();
-    }
-  };
 }`;
 
 describe('getReferencingMethods', function () {
   it('dedups multiple usages in same method', function() {
     const ast = new TypescriptAst(code);
     const myClass = find(ast.nodes, ts.isClassDeclaration, 'Foo');
-    const parameters = myClass.members.find<ts.ConstructorDeclaration>(ts.isConstructorDeclaration).parameters;
-    const result = getReferencingMethods(parameters[0], myClass, ast).map(x => (x as any).name.text);
+    const parameter = myClass.members.find<ts.ConstructorDeclaration>(ts.isConstructorDeclaration).parameters[0];
+    const publicMethod = find(myClass.members, ts.isMethodDeclaration, 'callGhostBustersIfNeeded');
+    const members = new TypescriptMember(publicMethod, MemberType.publicMethod);
+    const result = getReferencingMethods(parameter, [members], ast);
     expect(result).toEqual(['callGhostBustersIfNeeded']);
   });
 
   it("does not return the method when passed a method's root node", function() {
     const ast = new TypescriptAst(code);
     const myClass = find(ast.nodes, ts.isClassDeclaration, 'Foo');
-    const method = find(myClass.members, ts.isMethodDeclaration, 'callGhostBustersIfNeeded');
-    const result = getReferencingMethods(method, myClass, ast).map(x => (x as any).name.text);
+    const method1 = find(myClass.members, ts.isMethodDeclaration, 'callGhostBustersIfNeeded');
+    const method2 = find(myClass.members, ts.isMethodDeclaration, 'handleGhostsIfNeeded');
+    const members = [method1, method2].map(x => new TypescriptMember(x, MemberType.publicMethod));
+    const result = getReferencingMethods(method1, members, ast);
     expect(result).toEqual(['handleGhostsIfNeeded']);
-  });
-
-  it('does not return references in different classes', function() {
-    const ast = new TypescriptAst(code);
-    const myClass = find(ast.nodes, ts.isClassDeclaration, 'Foo');
-    const method = find(myClass.members, ts.isMethodDeclaration, 'handleGhostsIfNeeded');
-    const result = getReferencingMethods(method, myClass, ast).map(x => (x as any).name.text);
-    expect(result).toEqual([]);
-  });
-
-  it('treats class properties that are arrow functions as methods', function() {
-    const ast = new TypescriptAst(code);
-    const myClass = find(ast.nodes, ts.isClassDeclaration, 'Bar');
-    const method = find(myClass.members, ts.isMethodDeclaration, 'methodA');
-    const result = getReferencingMethods(method, myClass, ast).map(x => (x as any).name.text);
-    expect(result).toEqual(['functionA']);
   });
 });
 

@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "codemirror": "^5.18.2",
+    "lodash.difference": "^4.5.0",
     "lodash.flatten": "^4.4.0",
     "lodash.range": "^3.2.0",
     "lodash.shuffle": "^4.2.0",

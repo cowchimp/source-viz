@@ -3,7 +3,7 @@ import {SourcePanel} from './SourcePanel';
 import {ConfigurableMatrix} from './ConfigurableMatrix';
 import {example} from '../example';
 import {MemberInfo} from '../core/types';
-import {analyzeSource} from '../core/parsers/typescript/analyzeSource';
+import {analyzeSource} from '../core/parsers/typescript/class-based/analyzeSource';
 import {Description} from './Description';
 import {Title} from './Title';
 

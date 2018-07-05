@@ -41,7 +41,7 @@ export class TypescriptAst {
   }
 
   getName(node: ts.NamedDeclaration): string {
-    if (!ts.isIdentifier(node.name)) {
+    if (!node.name || !ts.isIdentifier(node.name)) {
       throw new Error("must be able to parse NamedDeclaration's name");
     }
     return node.name.text;

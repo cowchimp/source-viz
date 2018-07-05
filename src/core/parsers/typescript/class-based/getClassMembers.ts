@@ -1,9 +1,9 @@
 import * as ts from 'typescript';
-import {MemberInfo, MemberType} from '../../types';
-import {getReferencingMethods} from './getReferencingMethods';
-import {TypescriptAst} from './TypescriptAst';
+import {MemberType} from '../../../types';
+import {TypescriptAst} from '../TypescriptAst';
+import {TypescriptMember} from '../TypescriptMember';
 
-export function getClassMembers(myClass: ts.ClassDeclaration, ast: TypescriptAst): MemberInfo[] {
+export function getClassMembers(myClass: ts.ClassDeclaration, ast: TypescriptAst): TypescriptMember[] {
   const dependencies = getDependencies(myClass);
   const properMethods = myClass.members.filter<ts.MethodDeclaration>(ts.isMethodDeclaration);
   const functionProperties = myClass.members
@@ -14,19 +14,10 @@ export function getClassMembers(myClass: ts.ClassDeclaration, ast: TypescriptAst
   const publicMethods = methods.filter(x => !privateMethods.includes(x));
 
   return [
-    ...getInfos(dependencies, MemberType.dependency),
-    ...getInfos(privateMethods, MemberType.privateMethod),
-    ...getInfos(publicMethods, MemberType.publicMethod)
+    ...dependencies.map(x => new TypescriptMember(x, MemberType.dependency)),
+    ...privateMethods.map(x => new TypescriptMember(x, MemberType.privateMethod)),
+    ...publicMethods.map(x => new TypescriptMember(x, MemberType.publicMethod))
   ];
-
-  function getInfos(nodes: ts.NamedDeclaration[], type: MemberType): MemberInfo[] {
-    return nodes
-      .map(x => ({
-        label: ast.getName(x),
-        type: type,
-        referencingMethods: getReferencingMethods(x, myClass, ast).map(ast.getName)
-      }));
-  }
 }
 
 function getDependencies(myClass: ts.ClassDeclaration) {

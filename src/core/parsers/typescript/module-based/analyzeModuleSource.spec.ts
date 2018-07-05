@@ -1,58 +1,41 @@
-import {analyzeSource} from './analyzeSource';
-import {MemberType} from '../../types';
+import {analyzeModuleSource} from './analyzeModuleSource';
+import {MemberType} from '../../../types';
 
-const code = `class Foo {
-  private depC;
+const code = `import depA from './depA';
+import depB from './depB';
 
-  constructor(
-    private depA,
-    private depB
-  ) {
+const depC;
 
-  }
+export function methodA() {
+  return methodC();
+}
 
-  methodA() {
-    return this.methodC();
-  }
-
-  public methodB() {
-    console.log(this.methodA())
-    const that = this;
-    if (true) {
-      that.depB.init();
-    }
-  }
-
-  private methodC() {
-    return this.depA.init();
-  }
-
-  public methodD() {
-    this.depB.init();
-  }
-
-  private methodE() {
-    return this.methodC();
-  }
-
-  public methodF() {
-    return this.methodE();
+export function methodB() {
+  console.log(methodA());
+  if (true) {
+    depB.init();
   }
 }
 
-class Bar {
-  constructor(
-    private foo: Foo
-  ) {}
+function methodC() {
+  return depA.init();
+}
 
-  methodA() {
-    console.log(this.foo.methodA());
-  }
+export function methodD() {
+  depB.init();
+}
+
+function methodE() {
+  return methodC();
+}
+
+export function methodF() {
+  return methodE();
 }`;
 
-describe('analyzeSource', function() {
+describe('analyzeModuleSource', function() {
   it('analyzes members correctly', function() {
-    const result = analyzeSource(code);
+    const result = analyzeModuleSource(code);
 
     expect(result).toEqual(expect.arrayContaining([
       { label: 'depA', type: MemberType.dependency, referencingMethods: ['methodC'] },
