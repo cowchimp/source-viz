@@ -12,6 +12,7 @@ import {AnalysisMode} from '../core/view-model/view-config';
 
 interface AppState {
   mode: AnalysisMode;
+  initialCode: string;
   code: string;
   members: MemberInfo[]
 }
@@ -21,11 +22,16 @@ export class App extends React.Component<any, AppState> {
     super(props);
 
     const defaultMode = AnalysisMode.class;
-    this.state = { mode: defaultMode, code: examples[defaultMode], members: [] }
+    this.state = {
+      mode: defaultMode,
+      initialCode: examples[defaultMode],
+      code: examples[defaultMode],
+      members: []
+    }
   }
 
   onModeChange = (value) => {
-    this.setState({ mode: value });
+    this.setState({ mode: value, initialCode: examples[value] });
   };
 
   onCodeChange = (newCode) => {
@@ -54,7 +60,7 @@ export class App extends React.Component<any, AppState> {
           <Title />
           <Description />
           <Mode value={this.state.mode} onChange={this.onModeChange} />
-          <SourcePanel code={this.state.code} onCodeChange={this.onCodeChange} onAnalyze={this.onAnalyze} />
+          <SourcePanel code={this.state.code} initialCode={this.state.initialCode} onCodeChange={this.onCodeChange} onAnalyze={this.onAnalyze} />
         </div>
         <ConfigurableMatrix members={this.state.members} />
       </div>
