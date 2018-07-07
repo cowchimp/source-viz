@@ -1,11 +1,11 @@
 import * as React from 'react';
-import * as CodeMirror from 'react-codemirror';
+import {UnControlled as CodeMirror} from 'react-codemirror2';
 import 'codemirror/mode/javascript/javascript';
 
 export function SourceEditor({code, onChange, onSubmit}) {
   return (
     <CodeMirror value={code}
-                onChange={onChange}
+                onChange={(editor, data, value) => onChange(value)}
                 options={{
                   lineNumbers: true,
                   mode: 'application/typescript',
@@ -13,6 +13,6 @@ export function SourceEditor({code, onChange, onSubmit}) {
                     'Cmd-Enter': onSubmit,
                     'Alt-Enter': onSubmit
                   }
-                }} />
+                }}/>
   );
 }
