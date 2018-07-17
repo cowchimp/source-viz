@@ -6,7 +6,7 @@ import {MemberType} from '../../types';
 
 const validReferencingMemberTypes = [MemberType.privateMethod, MemberType.publicMethod];
 
-export function getReferencingMethods(node: ts.NamedDeclaration, members: TypescriptMember[], ast: TypescriptAst): string[] {
+export function getReferencingMethods(node: ts.NamedDeclaration, members: TypescriptMember[], ast: TypescriptAst): ts.NamedDeclaration[] {
   if (!node.name || !ts.isIdentifier(node.name) || !members.length) {
     return [];
   }
@@ -23,7 +23,7 @@ export function getReferencingMethods(node: ts.NamedDeclaration, members: Typesc
     }
     const referencingMethod = potentialReferencingMethods.find(x => ancestors.includes(x));
     if (referencingMethod) {
-      acc.add(ast.getName(referencingMethod));
+      acc.add(referencingMethod);
     }
     return acc;
   }, new Set()));

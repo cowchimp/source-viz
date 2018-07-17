@@ -23,4 +23,18 @@ describe('getTopLevelFunctions', function() {
     const result = getTopLevelFunctions(ast).map(x => x.getMemberInfo(ast));
     expect(result).not.toContainEqual(expect.objectContaining({ label: 'bar' }));
   });
+
+  it('returns exported default named functions as public methods', function() {
+    const code = `export default function foo() {}`;
+    const ast = new TypescriptAst(code);
+    const result = getTopLevelFunctions(ast).map(x => x.getMemberInfo(ast));
+    expect(result).toEqual([expect.objectContaining({ label: 'foo', type: MemberType.publicMethod })]);
+  });
+
+  it('returns exported default anonymous functions as public methods', function() {
+    const code = `export default function() {}`;
+    const ast = new TypescriptAst(code);
+    const result = getTopLevelFunctions(ast).map(x => x.getMemberInfo(ast));
+    expect(result).toEqual([expect.objectContaining({ label: 'default', type: MemberType.publicMethod })]);
+  });
 });
