@@ -1,7 +1,8 @@
 [![Travis](https://img.shields.io/travis/cowchimp/astscout.svg)](https://travis-ci.org/cowchimp/astscout)
 
-
 # ⚜️ AST Scout
+
+> Check out [this blog post](https://blog.yonatan.dev/ast-scout-code-structure-visualization-tool) to learn about AST Scout.
 
 ### [Demo](http://astscout.cowchimp.com)
 
