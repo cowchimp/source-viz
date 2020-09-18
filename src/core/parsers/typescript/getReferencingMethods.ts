@@ -26,5 +26,5 @@ export function getReferencingMethods(node: ts.NamedDeclaration, members: Typesc
       acc.add(referencingMethod);
     }
     return acc;
-  }, new Set()));
+  }, new Set<ts.NamedDeclaration>()));
 }

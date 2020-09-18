@@ -46,7 +46,7 @@ export class Matrix extends React.Component<any, any> {
                                cellWidth={cellWidth}
                                cellHeight={cellHeight}
                                width={width}
-                               height={height} />}
+                               height={height} />
           {rows.map(x => (
             <Row key={x}
                  label={x}

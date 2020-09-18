@@ -30,7 +30,7 @@ function getDependencies(myClass: ts.ClassDeclaration) {
   return privateConstructorParameters;
 }
 
-function filterByScope<T extends ts.Node>(nodes: ReadonlyArray<T>, scope: ts.ModifierFlags): T[] {
+function filterByScope<T extends ts.Declaration>(nodes: ReadonlyArray<T>, scope: ts.ModifierFlags): T[] {
   return nodes.filter(x => {
     const flags = ts.getCombinedModifierFlags(x);
     return flags & scope;
