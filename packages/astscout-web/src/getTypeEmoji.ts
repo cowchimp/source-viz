@@ -1,4 +1,4 @@
-import {MemberType} from './core/types';
+import { MemberType } from './core/types';
 
 export function getTypeEmoji(type: MemberType) {
   if (type == MemberType.dependency) {

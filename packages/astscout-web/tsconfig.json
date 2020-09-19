@@ -1,10 +1,8 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "lib": [ "es2015", "es2016", "es2017", "dom" ],
+    "lib": ["es2015", "es2016", "es2017", "dom"],
     "jsx": "react"
   },
-  "files": [
-    "src/index.tsx"
-  ]
+  "files": ["src/index.tsx"]
 }

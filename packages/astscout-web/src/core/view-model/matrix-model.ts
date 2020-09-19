@@ -11,19 +11,23 @@ export interface Link {
 export interface MatrixModel {
   rows: string[];
   columns: RowItem[];
-  links: Link[]
+  links: Link[];
 }
 
-export function createMatrixModel(rowsToRowItems: Map<RowItem, RowItem[]>): MatrixModel {
-  const rows = [], columns = [], links = [];
+export function createMatrixModel(
+  rowsToRowItems: Map<RowItem, RowItem[]>,
+): MatrixModel {
+  const rows = [],
+    columns = [],
+    links = [];
 
-  rowsToRowItems.forEach((rowItems, {label: row}) => {
+  rowsToRowItems.forEach((rowItems, { label: row }) => {
     rows.push(row);
-    rowItems.forEach(column => {
-      if (!columns.some(x => x.label == column.label)) {
+    rowItems.forEach((column) => {
+      if (!columns.some((x) => x.label == column.label)) {
         columns.push(column);
       }
-      links.push({row, column})
+      links.push({ row, column });
     });
   });
 

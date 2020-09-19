@@ -1,11 +1,17 @@
-import {sort} from './sort';
-import {ViewConfig} from './view-config';
-import {MemberInfo, MemberType} from '../types';
-import {groupPublicMethodsToReferencedMembers} from '../groupPublicMethodsToReferencedMembers';
-import {createMatrixModel, MatrixModel} from './matrix-model';
+import { sort } from './sort';
+import { ViewConfig } from './view-config';
+import { MemberInfo, MemberType } from '../types';
+import { groupPublicMethodsToReferencedMembers } from '../groupPublicMethodsToReferencedMembers';
+import { createMatrixModel, MatrixModel } from './matrix-model';
 
-export function getMatrixModel(members: MemberInfo[], viewConfig: ViewConfig): MatrixModel {
-  const membersToLinkedMembers = groupPublicMethodsToReferencedMembers(members, viewConfig.transitiveLinkFilters);
+export function getMatrixModel(
+  members: MemberInfo[],
+  viewConfig: ViewConfig,
+): MatrixModel {
+  const membersToLinkedMembers = groupPublicMethodsToReferencedMembers(
+    members,
+    viewConfig.transitiveLinkFilters,
+  );
 
   filter(membersToLinkedMembers, viewConfig.columnFilters);
 
@@ -16,10 +22,14 @@ export function getMatrixModel(members: MemberInfo[], viewConfig: ViewConfig): M
   return model;
 }
 
-function filter(model: Map<MemberInfo, MemberInfo[]>, columnFilters: Set<MemberType>): void {
+function filter(
+  model: Map<MemberInfo, MemberInfo[]>,
+  columnFilters: Set<MemberType>,
+): void {
   model.forEach((value, key) => {
-    return model.set(key, value.filter(y => columnFilters.has(y.type)));
+    return model.set(
+      key,
+      value.filter((y) => columnFilters.has(y.type)),
+    );
   });
 }
-
-

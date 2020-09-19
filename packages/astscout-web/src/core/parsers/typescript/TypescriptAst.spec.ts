@@ -1,5 +1,5 @@
 import * as ts from 'typescript';
-import {TypescriptAst} from './TypescriptAst';
+import { TypescriptAst } from './TypescriptAst';
 
 const code = `class Foo {
   private depC;
@@ -53,10 +53,10 @@ class Bar {
 describe('TypescriptAst', function () {
   it('returns parent correctly', function () {
     const ast = new TypescriptAst(code);
-    const myClass = ast.nodes.find< ts.ClassDeclaration>(ts.isClassDeclaration);
+    const myClass = ast.nodes.find<ts.ClassDeclaration>(ts.isClassDeclaration);
     const methodA = myClass.members
       .filter<ts.MethodDeclaration>(ts.isMethodDeclaration)
-      .find(x => ts.isIdentifier(x.name) && x.name.text == 'methodA');
+      .find((x) => ts.isIdentifier(x.name) && x.name.text == 'methodA');
 
     const result = ast.getParent(methodA);
 

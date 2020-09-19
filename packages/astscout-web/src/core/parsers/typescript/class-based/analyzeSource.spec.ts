@@ -1,5 +1,5 @@
-import {analyzeSource} from './analyzeSource';
-import {MemberType} from '../../../types';
+import { analyzeSource } from './analyzeSource';
+import { MemberType } from '../../../types';
 
 const code = `class Foo {
   private depC;
@@ -50,23 +50,57 @@ class Bar {
   }
 }`;
 
-describe('analyzeSource', function() {
-  it('analyzes members correctly', function() {
+describe('analyzeSource', function () {
+  it('analyzes members correctly', function () {
     const result = analyzeSource(code);
 
-    expect(result).toEqual(expect.arrayContaining([
-      { label: 'depA', type: MemberType.dependency, referencingMethods: ['methodC'] },
-      { label: 'depB', type: MemberType.dependency, referencingMethods: ['methodB', 'methodD'] },
-      { label: 'methodA', type: MemberType.publicMethod, referencingMethods: ['methodB'] },
-      { label: 'methodB', type: MemberType.publicMethod, referencingMethods: [] },
-      { label: 'methodD', type: MemberType.publicMethod, referencingMethods: [] },
-      { label: 'methodF', type: MemberType.publicMethod, referencingMethods: [] },
-      { label: 'methodC', type: MemberType.privateMethod, referencingMethods: ['methodA', 'methodE'] },
-      { label: 'methodE', type: MemberType.privateMethod, referencingMethods: ['methodF'] },
-    ]));
+    expect(result).toEqual(
+      expect.arrayContaining([
+        {
+          label: 'depA',
+          type: MemberType.dependency,
+          referencingMethods: ['methodC'],
+        },
+        {
+          label: 'depB',
+          type: MemberType.dependency,
+          referencingMethods: ['methodB', 'methodD'],
+        },
+        {
+          label: 'methodA',
+          type: MemberType.publicMethod,
+          referencingMethods: ['methodB'],
+        },
+        {
+          label: 'methodB',
+          type: MemberType.publicMethod,
+          referencingMethods: [],
+        },
+        {
+          label: 'methodD',
+          type: MemberType.publicMethod,
+          referencingMethods: [],
+        },
+        {
+          label: 'methodF',
+          type: MemberType.publicMethod,
+          referencingMethods: [],
+        },
+        {
+          label: 'methodC',
+          type: MemberType.privateMethod,
+          referencingMethods: ['methodA', 'methodE'],
+        },
+        {
+          label: 'methodE',
+          type: MemberType.privateMethod,
+          referencingMethods: ['methodF'],
+        },
+      ]),
+    );
   });
 
-  it('returns an empty array when passed source with node class', function() {
+  it('returns an empty array when passed source with node class', function () {
     const result = analyzeSource(`console.log('Hello world`);
 
     expect(result).toEqual([]);

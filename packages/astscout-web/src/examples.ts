@@ -1,4 +1,4 @@
-import {AnalysisMode} from './core/view-model/view-config';
+import { AnalysisMode } from './core/view-model/view-config';
 
 export const examples = {
   [AnalysisMode.class]: `class Foo {
@@ -79,5 +79,5 @@ function methodE() {
 
 export function methodF() {
   return methodE();
-}`
+}`,
 };
