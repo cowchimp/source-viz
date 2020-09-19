@@ -7,6 +7,7 @@
   },
   "devDependencies": {
     "lerna": "^3.22.1",
+    "prettier": "2.1.2",
     "typescript": "^3.9.7"
   }
 }
