@@ -3,4 +3,5 @@ dist
 input
 TODO.md
 sample-data.json
+out
 release.sh
