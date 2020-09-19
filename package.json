@@ -2,6 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "build": "lerna run build",
     "postinstall": "lerna bootstrap --hoist"
   },
   "devDependencies": {
