@@ -1,0 +1,40 @@
+{
+  "name": "astscout-core",
+  "private": true,
+  "version": "1.4.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p ./",
+    "test": "jest"
+  },
+  "dependencies": {
+    "lodash.difference": "^4.5.0",
+    "lodash.flatten": "^4.4.0",
+    "lodash.range": "^3.2.0",
+    "lodash.shuffle": "^4.2.0",
+    "louvain": "^1.2.0",
+    "react": "^16.3.2",
+    "typescript": "^3.9.7"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.14",
+    "@types/react": "^16.3.12",
+    "jest": "^26.4.2",
+    "ts-jest": "^26.3.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
+}

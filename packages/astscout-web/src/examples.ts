@@ -1,4 +1,4 @@
-import { AnalysisMode } from './core/view-model/view-config';
+import { AnalysisMode } from 'astscout-core';
 
 export const examples = {
   [AnalysisMode.class]: `class Foo {

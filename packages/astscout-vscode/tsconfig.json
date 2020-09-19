@@ -2,9 +2,9 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "target": "es6",
-    "outDir": "out",
     "lib": ["es6"],
     "rootDir": "src",
+    "outDir": "out",
     "strict": true /* enable all strict type-checking options */
     /* Additional Checks */
     // "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */

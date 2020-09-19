@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { SourcePanel } from './SourcePanel';
-import { ConfigurableMatrix } from './ConfigurableMatrix';
+import {
+  AnalysisMode,
+  analyzeSource,
+  analyzeModuleSource,
+  ConfigurableMatrix,
+} from 'astscout-core';
+import type { MemberInfo } from 'astscout-core';
 import { examples } from '../examples';
-import { MemberInfo } from '../core/types';
-import { analyzeSource } from '../core/parsers/typescript/class-based/analyzeSource';
-import { analyzeModuleSource } from '../core/parsers/typescript/module-based/analyzeModuleSource';
 import { Description } from './Description';
 import { Title } from './Title';
 import { Mode } from './Mode';
-import { AnalysisMode } from '../core/view-model/view-config';
 
 interface AppState {
   mode: AnalysisMode;
