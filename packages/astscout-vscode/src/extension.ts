@@ -1,6 +1,8 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import * as path from 'path';
+import { Uri } from 'vscode';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -26,32 +28,58 @@ export function activate(context: vscode.ExtensionContext) {
 
       const panel = vscode.window.createWebviewPanel(
         'catCoding', // Identifies the type of the webview. Used internally
-        'Cat Coding', // Title of the panel displayed to the user
+        'AST Scout', // Title of the panel displayed to the user
         vscode.ViewColumn.Beside, // Editor column to show the new webview panel in.
-        {}, // Webview options. More on these later.
+        {
+          enableScripts: true,
+        }, // Webview options. More on these later.
       );
 
       const content = textEditor.document.getText();
-      panel.webview.html = getWebviewContent(content);
+
+      console.log('context.extensionPath');
+      const fullPath = path.join(
+        context.extensionPath,
+        'node_modules/astscout-vscode-web/dist/bundle.2347fcb486a536c4e2c5.js',
+      );
+      const uri = vscode.Uri.file(fullPath);
+      console.log(uri);
+      const webviewUri = panel.webview.asWebviewUri(uri);
+      console.log(webviewUri);
+
+      panel.webview.html = getWebviewContent(content, webviewUri);
     },
   );
 
   context.subscriptions.push(disposable);
 }
 
-function getWebviewContent(str: string) {
+function getWebviewContent(code: string, scriptUri: Uri) {
   return `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cat Coding</title>
-</head>
-<body>
-    <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" width="300" />
-    <code>${str}</code>
-</body>
-</html>`;
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+    />
+    <style type="text/css">
+      .controls { font-family:'Roboto',sans-serif; }
+      .controls { display:flow-root; }
+      .control { float:left; margin-right:12px; }
+      .hover-target { fill: transparent; }
+      .hover-highlight { fill:#b3b3b3; fill-opacity:0.25; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      window.scoutCode = atob('${Buffer.from(code).toString('base64')}');
+    </script>
+    <script src="${scriptUri}"></script>
+  </body>
+</html>
+`;
 }
 
 // this method is called when your extension is deactivated

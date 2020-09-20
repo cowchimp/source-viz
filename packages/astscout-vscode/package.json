@@ -25,6 +25,9 @@
     "build": "tsc -p ./",
     "watch": "tsc -watch -p ./"
   },
+  "dependencies": {
+    "astscout-vscode-web": "1.4.0"
+  },
   "devDependencies": {
     "@types/vscode": "^1.49.0",
     "@types/glob": "^7.1.3",
