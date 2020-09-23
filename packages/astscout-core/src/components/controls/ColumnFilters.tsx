@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Checkbox } from './Checkbox';
-import { getTypeEmoji } from '../getTypeEmoji';
-import { MemberInfo, MemberType } from '../core/types';
+import { getTypeEmoji } from '../../getTypeEmoji';
+import { MemberInfo, MemberType } from '../../core/types';
 
 interface ColumnFilterProps {
   onChange: (x: Set<MemberType>) => void;

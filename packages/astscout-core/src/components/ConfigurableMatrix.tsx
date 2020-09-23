@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getMatrixModel } from '../core/view-model/getMatrixModel';
-import { Controls } from './Controls';
-import { Matrix } from './Matrix';
+import { Controls } from './controls/Controls';
+import { Matrix } from './matrix/Matrix';
 import { defaultViewConfig, ViewConfig } from '../core/view-model/view-config';
 import { MemberInfo } from '../core/types';
 

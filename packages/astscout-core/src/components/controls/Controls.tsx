@@ -3,8 +3,8 @@ import { Zoom } from './Zoom';
 import { Sort } from './Sort';
 import { ColumnFilters } from './ColumnFilters';
 import { TransitiveLinkFilters } from './TransitiveLinkFilters';
-import { ViewConfig } from '../core/view-model/view-config';
-import { MemberInfo } from '../core/types';
+import { ViewConfig } from '../../core/view-model/view-config';
+import { MemberInfo } from '../../core/types';
 
 interface ControlsProps {
   viewConfig: ViewConfig;

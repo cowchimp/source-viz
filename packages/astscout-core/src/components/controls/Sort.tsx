@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Radio } from './Radio';
-import { SortType } from '../core/view-model/view-config';
+import { SortType } from '../../core/view-model/view-config';
 
 interface SortProps {
   onChange: (x: SortType) => void;

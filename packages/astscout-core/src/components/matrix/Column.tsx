@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getTypeEmoji } from '../getTypeEmoji';
+import { getTypeEmoji } from '../../getTypeEmoji';
 
 export function Column({ label, type, x, height, cellWidth }) {
   return (

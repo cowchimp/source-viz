@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Checkbox } from './Checkbox';
-import { MemberType } from '../core/types';
-import { getTypeEmoji } from '../getTypeEmoji';
+import { MemberType } from '../../core/types';
+import { getTypeEmoji } from '../../getTypeEmoji';
 
 interface TransitiveLinkFilterProps {
   onChange: (x: Set<MemberType>) => void;
