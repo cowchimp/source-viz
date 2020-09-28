@@ -2,9 +2,8 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import * as path from 'path';
-import { Uri } from 'vscode';
+import type { Uri, ExtensionContext, WebviewPanel, TextEditor } from 'vscode';
 
-// this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
   // Use the console to output diagnostic information (console.log) and errors (console.error)
@@ -21,11 +20,6 @@ export function activate(context: vscode.ExtensionContext) {
     (textEditor) => {
       // The code you place here will be executed every time your command is executed
 
-      // Display a message box to the user
-      vscode.window.showInformationMessage(
-        'Hello World from Hello VSCode Extension!!!',
-      );
-
       const panel = vscode.window.createWebviewPanel(
         'catCoding', // Identifies the type of the webview. Used internally
         'AST Scout', // Title of the panel displayed to the user
@@ -35,26 +29,34 @@ export function activate(context: vscode.ExtensionContext) {
         }, // Webview options. More on these later.
       );
 
-      const content = textEditor.document.getText();
+      const bundleUri = getBundleUri(context, panel);
 
-      console.log('context.extensionPath');
-      const fullPath = path.join(
-        context.extensionPath,
-        'node_modules/astscout-vscode-web/dist/bundle.2347fcb486a536c4e2c5.js',
-      );
-      const uri = vscode.Uri.file(fullPath);
-      console.log(uri);
-      const webviewUri = panel.webview.asWebviewUri(uri);
-      console.log(webviewUri);
+      panel.webview.html = getWebviewContent(textEditor, bundleUri);
 
-      panel.webview.html = getWebviewContent(content, webviewUri);
+      vscode.window.onDidChangeActiveTextEditor((editor) => {
+        if (!editor) {
+          return;
+        }
+        panel.webview.html = getWebviewContent(editor, bundleUri);
+      });
     },
   );
 
   context.subscriptions.push(disposable);
 }
 
-function getWebviewContent(code: string, scriptUri: Uri) {
+function getBundleUri(context: ExtensionContext, panel: WebviewPanel) {
+  const fullPath = path.join(
+    context.extensionPath,
+    'node_modules/astscout-vscode-web/dist/bundle.js',
+  );
+  const uri = vscode.Uri.file(fullPath);
+  const bundleUri = panel.webview.asWebviewUri(uri);
+  return bundleUri;
+}
+
+function getWebviewContent(textEditor: TextEditor, bundleUri: Uri) {
+  const code = textEditor.document.getText();
   return `<!DOCTYPE html>
 <html>
   <head>
@@ -64,7 +66,7 @@ function getWebviewContent(code: string, scriptUri: Uri) {
       rel="stylesheet"
     />
     <style type="text/css">
-      .controls { font-family:'Roboto',sans-serif; }
+      .code, .controls { font-family: var(--vscode-editor-font-family); font-size: var(--vscode-editor-font-size); font-weight: var(--vscode-editor-font-weight); }
       .controls { display:flow-root; }
       .control { float:left; margin-right:12px; }
       .hover-target { fill: transparent; }
@@ -76,7 +78,7 @@ function getWebviewContent(code: string, scriptUri: Uri) {
     <script>
       window.scoutCode = atob('${Buffer.from(code).toString('base64')}');
     </script>
-    <script src="${scriptUri}"></script>
+    <script src="${bundleUri}"></script>
   </body>
 </html>
 `;

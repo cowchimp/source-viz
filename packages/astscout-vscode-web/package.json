@@ -3,7 +3,7 @@
   "version": "1.4.0",
   "scripts": {
     "start": "webpack -w --mode development --output ./dist/bundle.js --devtool inline-source-map",
-    "build": "webpack --mode production --output ./dist/bundle.[hash].js"
+    "build": "webpack --mode production --output ./dist/bundle.js"
   },
   "dependencies": {
     "astscout-core": "1.4.0",
