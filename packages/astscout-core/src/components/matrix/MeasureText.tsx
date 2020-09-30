@@ -30,7 +30,7 @@ export class MeasureText extends React.Component<MeasureTextProps, any> {
     return !this.state.measurements ? (
       <svg ref={this.myRef}>
         {Object.entries(this.props.strings).map(([key, value]) => (
-          <text data-key={key} className={this.props.className}>
+          <text key={key} data-key={key} className={this.props.className}>
             {value}
           </text>
         ))}
