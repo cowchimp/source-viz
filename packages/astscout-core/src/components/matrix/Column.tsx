@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { getTypeEmoji } from '../../getTypeEmoji';
+import { columnGridMargin } from './constants';
 
 export function Column({ label, type, x, height, cellWidth }) {
   return (
     <g className="column" transform={'translate(' + x + ')rotate(-90)'}>
       <line stroke="#fff" x1={-height} />
       <text
-        x={28}
+        x={columnGridMargin}
         y={cellWidth / 2}
         dy=".32em"
         textAnchor="start"

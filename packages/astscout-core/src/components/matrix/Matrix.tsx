@@ -4,6 +4,7 @@ import { MatrixModel } from '../../core/view-model/matrix-model';
 import { MeasureText } from './MeasureText';
 import { adopt } from 'react-adopt';
 import { ZoomWrapper } from './ZoomWrapper';
+import { rowGridMargin, columnGridMargin } from './constants';
 
 interface MatrixProps extends MatrixModel {
   cellWidth: number;
@@ -46,8 +47,8 @@ export function Matrix(props: MatrixProps) {
           zoomRatio = 1,
         } = props;
 
-        offsetLeft += 6;
-        offsetTop += 6;
+        offsetLeft += rowGridMargin;
+        offsetTop += columnGridMargin;
         const canvasOuterWidth = columns.length * cellWidth + offsetLeft;
         const canvasOuterHeight = rows.length * cellHeight + offsetTop;
         const viewportWidth = zoomedOut ? '100%' : canvasOuterWidth * zoomRatio;
