@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as isEqual from 'lodash.isequal';
 
 interface MeasureTextProps {
   strings: { [k: string]: string };
@@ -17,31 +16,7 @@ export class MeasureText extends React.Component<MeasureTextProps, any> {
   }
 
   componentDidMount() {
-    const currentRef = this.myRef.current;
-    if (currentRef) {
-      this.measure(currentRef);
-    }
-  }
-
-  componentDidUpdate(prevProps: Readonly<MeasureTextProps>) {
-    if (
-      !isEqual(
-        Object.values(prevProps.strings),
-        Object.values(this.props.strings),
-      )
-    ) {
-      this.setState({ measurements: null });
-      return;
-    }
-
-    const currentRef = this.myRef.current;
-    if (currentRef) {
-      this.measure(currentRef);
-    }
-  }
-
-  private measure(currentRef: SVGSVGElement) {
-    const children = Array.from(currentRef.children);
+    const children = Array.from(this.myRef.current.children);
     const textElements = children.filter(isSvgTextElement);
     const measurements = textElements.reduce((acc, item) => {
       const textLength = item.getComputedTextLength();
