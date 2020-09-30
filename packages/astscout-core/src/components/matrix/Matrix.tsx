@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Grid } from './Grid';
 import { MatrixModel } from '../../core/view-model/matrix-model';
 import { MeasureText } from './MeasureText';
+import { adopt } from 'react-adopt';
+import { ZoomWrapper } from './ZoomWrapper';
 
 interface MatrixProps extends MatrixModel {
   cellWidth: number;
@@ -9,16 +11,27 @@ interface MatrixProps extends MatrixModel {
   zoomRatio: number;
 }
 
+const offsets = ({ rows, columns, render }) => (
+  <MeasureText
+    strings={{
+      offsetLeft: getLongestString(rows),
+      offsetTop: getLongestString(columns.map((x) => x.label)),
+    }}
+    className="code"
+  >
+    {render}
+  </MeasureText>
+);
+
+const Composed = adopt({
+  offsets,
+  zoomedOut: <ZoomWrapper />,
+});
+
 export function Matrix(props: MatrixProps) {
   return (
-    <MeasureText
-      strings={{
-        offsetLeft: getLongestString(props.rows),
-        offsetTop: getLongestString(props.columns.map((x) => x.label)),
-      }}
-      className="code"
-    >
-      {({ offsetLeft, offsetTop }) => {
+    <Composed {...props}>
+      {({ offsets: { offsetLeft, offsetTop }, zoomedOut }) => {
         const {
           rows,
           columns,
@@ -30,21 +43,19 @@ export function Matrix(props: MatrixProps) {
 
         offsetLeft += 6;
         offsetTop += 6;
-        const width = columns.length * cellWidth;
-        const height = rows.length * cellHeight;
-        const outerWidth = width + offsetLeft;
-        const outerHeight = height + offsetTop;
+        const canvasOuterWidth = columns.length * cellWidth + offsetLeft;
+        const canvasOuterHeight = rows.length * cellHeight + offsetTop;
+        const viewportWidth = zoomedOut ? '100%' : canvasOuterWidth * zoomRatio;
+        const viewportHeight = zoomedOut ? null : canvasOuterHeight * zoomRatio;
 
         return (
           <svg
-            width={outerWidth * zoomRatio}
-            height={outerHeight * zoomRatio}
-            viewBox={`0 0 ${outerWidth} ${outerHeight}`}
+            width={viewportWidth}
+            height={viewportHeight}
+            viewBox={`0 0 ${canvasOuterWidth} ${canvasOuterHeight}`}
           >
             <g transform={'translate(' + offsetLeft + ',' + offsetTop + ')'}>
               <Grid
-                width={width}
-                height={height}
                 cellWidth={cellWidth}
                 cellHeight={cellHeight}
                 rows={rows}
@@ -55,7 +66,7 @@ export function Matrix(props: MatrixProps) {
           </svg>
         );
       }}
-    </MeasureText>
+    </Composed>
   );
 }
 

@@ -7,8 +7,6 @@ import { HoverTargetGroup } from './HoverTargetGroup';
 import { MatrixModel } from '../../core/view-model/matrix-model';
 
 interface GridProps extends MatrixModel {
-  width: number;
-  height: number;
   cellWidth: number;
   cellHeight: number;
 }
@@ -31,15 +29,9 @@ export class Grid extends React.Component<GridProps, any> {
     });
 
   render() {
-    const {
-      width,
-      height,
-      cellWidth,
-      cellHeight,
-      rows,
-      columns,
-      links,
-    } = this.props;
+    const { cellWidth, cellHeight, rows, columns, links } = this.props;
+    const width = columns.length * cellWidth;
+    const height = rows.length * cellHeight;
 
     const xScale = (label) =>
       columns.findIndex((x) => x.label == label) * cellWidth;

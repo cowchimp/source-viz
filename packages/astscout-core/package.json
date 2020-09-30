@@ -13,6 +13,7 @@
     "lodash.shuffle": "^4.2.0",
     "louvain": "^1.2.0",
     "react": "^16.3.2",
+    "react-adopt": "^0.6.0",
     "typescript": "^3.9.7"
   },
   "devDependencies": {
