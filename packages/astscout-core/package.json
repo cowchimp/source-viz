@@ -2,10 +2,8 @@
   "name": "astscout-core",
   "private": true,
   "version": "1.4.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "src/index.ts",
   "scripts": {
-    "build": "tsc -p ./",
     "test": "jest"
   },
   "dependencies": {
