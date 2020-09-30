@@ -11,17 +11,22 @@ interface MatrixProps extends MatrixModel {
   zoomRatio: number;
 }
 
-const offsets = ({ rows, columns, render }) => (
-  <MeasureText
-    strings={{
-      offsetLeft: getLongestString(rows),
-      offsetTop: getLongestString(columns.map((x) => x.label)),
-    }}
-    className="code"
-  >
-    {render}
-  </MeasureText>
-);
+const offsets = ({ rows, columns, render }) => {
+  const longestRow = getLongestString(rows);
+  const longestColumn = getLongestString(columns.map((x) => x.label));
+  return (
+    <MeasureText
+      strings={{
+        offsetLeft: longestRow,
+        offsetTop: longestColumn,
+      }}
+      className="code"
+      key={`${longestRow}-${longestColumn}`}
+    >
+      {render}
+    </MeasureText>
+  );
+};
 
 const Composed = adopt({
   offsets,
