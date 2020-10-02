@@ -4,7 +4,8 @@ import { MatrixModel } from '../../core/view-model/matrix-model';
 import { MeasureText } from './MeasureText';
 import { adopt } from 'react-adopt';
 import { AutoSizer } from 'react-virtualized';
-import { rowGridMargin, columnGridMargin } from './constants';
+import { columnGridMargin, rowGridMargin } from './constants';
+import { ZoomWrapper } from './ZoomWrapper';
 
 interface MatrixProps extends MatrixModel {
   cellWidth: number;
@@ -30,7 +31,16 @@ const offsets = ({ rows, columns, render }) => {
 
 const viewport = ({ render }) => (
   <div style={{ width: '100%' }}>
-    <AutoSizer>{render}</AutoSizer>
+    <AutoSizer>
+      {({ width }) => {
+        if (width === 0) {
+          return null;
+        }
+        return render({
+          width,
+        });
+      }}
+    </AutoSizer>
   </div>
 );
 
@@ -51,16 +61,8 @@ export function Matrix(props: MatrixProps) {
         const canvasOuterHeight = rows.length * cellHeight + offsetTop;
         const ratio = canvasOuterWidth / canvasOuterHeight;
 
-        const viewportWidth =
-          canvasOuterWidth < width ? canvasOuterWidth : width;
-        const viewportHeight = viewportWidth / ratio;
-
-        return (
-          <svg
-            width={viewportWidth}
-            height={viewportHeight}
-            viewBox={`0 0 ${canvasOuterWidth} ${canvasOuterHeight}`}
-          >
+        const svg = (
+          <svg width={canvasOuterWidth} height={canvasOuterHeight}>
             <g transform={'translate(' + offsetLeft + ',' + offsetTop + ')'}>
               <Grid
                 cellWidth={cellWidth}
@@ -71,6 +73,16 @@ export function Matrix(props: MatrixProps) {
               />
             </g>
           </svg>
+        );
+
+        if (canvasOuterWidth < width) {
+          return svg;
+        }
+
+        return (
+          <ZoomWrapper width={width} height={width / ratio}>
+            {svg}
+          </ZoomWrapper>
         );
       }}
     </Composed>
