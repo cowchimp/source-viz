@@ -9,7 +9,6 @@ import { rowGridMargin, columnGridMargin } from './constants';
 interface MatrixProps extends MatrixModel {
   cellWidth: number;
   cellHeight: number;
-  zoomRatio: number;
 }
 
 const offsets = ({ rows, columns, render }) => {

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Zoom } from './Zoom';
 import { Sort } from './Sort';
 import { ColumnFilters } from './ColumnFilters';
 import { TransitiveLinkFilters } from './TransitiveLinkFilters';
@@ -26,10 +25,6 @@ export function Controls(props: ControlsProps) {
       <TransitiveLinkFilters
         active={viewConfig.transitiveLinkFilters}
         onChange={(x) => onChange({ transitiveLinkFilters: x })}
-      />
-      <Zoom
-        activeZoom={viewConfig.zoomRatio}
-        onZoomChange={(z) => onChange({ zoomRatio: z })}
       />
     </div>
   );
