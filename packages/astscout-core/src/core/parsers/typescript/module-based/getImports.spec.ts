@@ -30,4 +30,16 @@ describe('getImports', function () {
       }),
     ]);
   });
+
+  it('returns namespace imports as dependencies', function () {
+    const code = `import * as Foo from './Foo'`;
+    const ast = new TypescriptAst(code);
+    const result = getImports(ast).map((x) => x.getMemberInfo(ast));
+    expect(result).toEqual([
+      expect.objectContaining({
+        label: 'Foo',
+        type: MemberType.dependency,
+      }),
+    ]);
+  });
 });
