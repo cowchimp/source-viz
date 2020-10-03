@@ -25,6 +25,9 @@ function sortByRandom(model: MatrixModel) {
 }
 
 function sortByLouvain(model: MatrixModel) {
+  if (model.links.length === 0) {
+    return;
+  }
   const nodes = model.rows.concat(model.columns.map((x) => x.label));
   const edges = model.links.map((x) => ({
     source: x.row,
