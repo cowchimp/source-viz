@@ -4,38 +4,38 @@ import { TypescriptAst } from '../TypescriptAst';
 import { MemberType } from '../../../types';
 import { TypescriptMember } from '../TypescriptMember';
 
-export function getTopLevelArrowFunctionVariables(
+export function getTopLevelFunctionVariables(
   ast: TypescriptAst,
 ): TypescriptMember[] {
   const topLevelStatements = ast.nodes.find<ts.SourceFile>(ts.isSourceFile)
     .statements;
 
-  const arrowFunctionVariables = getArrowFunctionVariables(topLevelStatements);
-  const publicArrowFunctionVariables = getArrowFunctionVariables(
+  const publicFunctionVariables = getFunctionVariables(
     topLevelStatements,
     isPublic,
   );
-  const privateArrowFunctionVariables = difference(
-    arrowFunctionVariables,
-    publicArrowFunctionVariables,
+  const functionVariables = getFunctionVariables(topLevelStatements);
+  const privateFunctionVariables = difference(
+    functionVariables,
+    publicFunctionVariables,
   );
 
   const defaultArrowFunction = getDefaultArrowFunction(topLevelStatements);
   if (defaultArrowFunction) {
-    publicArrowFunctionVariables.push(defaultArrowFunction);
+    publicFunctionVariables.push(defaultArrowFunction);
   }
 
   return [
-    ...publicArrowFunctionVariables.map(
+    ...publicFunctionVariables.map(
       (x) => new TypescriptMember(x, MemberType.publicMethod),
     ),
-    ...privateArrowFunctionVariables.map(
+    ...privateFunctionVariables.map(
       (x) => new TypescriptMember(x, MemberType.privateMethod),
     ),
   ];
 }
 
-function getArrowFunctionVariables(
+function getFunctionVariables(
   nodes: ReadonlyArray<ts.Node>,
   filterFunc: (variableStatement: ts.VariableStatement) => boolean = () => true,
 ): ts.NamedDeclaration[] {
@@ -44,7 +44,13 @@ function getArrowFunctionVariables(
     .filter(filterFunc)
     .filter((x) => x.declarationList.declarations.length == 1)
     .map<ts.VariableDeclaration>((x) => x.declarationList.declarations[0])
-    .filter((x) => x.initializer && ts.isArrowFunction(x.initializer));
+    .filter((x) => {
+      return (
+        x.initializer &&
+        (ts.isArrowFunction(x.initializer) ||
+          ts.isFunctionExpression(x.initializer))
+      );
+    });
 }
 
 function isPublic(x: ts.Node): boolean {
