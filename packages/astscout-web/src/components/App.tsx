@@ -43,7 +43,7 @@ export class App extends React.Component<any, AppState> {
     this.setState({ code: newCode });
   };
 
-  onAnalyze = async () => {
+  onAnalyze = () => {
     let members;
     switch (this.state.mode) {
       case 'class':
