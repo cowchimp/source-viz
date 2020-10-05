@@ -1,4 +1,4 @@
-import { analyzeSource } from './analyzeSource';
+import { analyzeClassSource } from './analyzeClassSource';
 import { MemberType } from '../../../types';
 
 const code = `class Foo {
@@ -50,9 +50,9 @@ class Bar {
   }
 }`;
 
-describe('analyzeSource', function () {
+describe('analyzeClassSource', function () {
   it('analyzes members correctly', function () {
-    const result = analyzeSource(code);
+    const result = analyzeClassSource(code);
 
     expect(result).toEqual(
       expect.arrayContaining([
@@ -101,7 +101,7 @@ describe('analyzeSource', function () {
   });
 
   it('returns an empty array when passed source with node class', function () {
-    const result = analyzeSource(`console.log('Hello world`);
+    const result = analyzeClassSource(`console.log('Hello world`);
 
     expect(result).toEqual([]);
   });

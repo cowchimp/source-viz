@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AnalysisMode } from '../core/view-model/view-config';
-import { analyzeSource } from '../core/parsers/typescript/class-based/analyzeSource';
+import { analyzeClassSource } from '../core/parsers/typescript/class-based/analyzeClassSource';
 import { analyzeModuleSource } from '../core/parsers/typescript/module-based/analyzeModuleSource';
 import { ConfigurableMatrix } from './ConfigurableMatrix';
 import { ErrorBoundary } from './ErrorBoundary';
@@ -19,7 +19,7 @@ export function CodeMatrix(props: CodeMatrixProps) {
     let members;
     switch (props.mode) {
       case 'class':
-        members = analyzeSource(props.code);
+        members = analyzeClassSource(props.code);
         break;
       case 'module':
         members = analyzeModuleSource(props.code);
