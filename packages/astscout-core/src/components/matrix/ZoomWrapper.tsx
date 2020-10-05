@@ -32,6 +32,8 @@ export class ZoomWrapper extends React.Component<ZoomWrapperProps, any> {
           detectWheel={false}
           detectPinchGesture={true}
           preventPanOutside={true}
+          background="transparent"
+          SVGBackground="transparent"
         >
           {this.props.children}
         </UncontrolledReactSVGPanZoom>

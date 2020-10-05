@@ -39,7 +39,7 @@ export class Grid extends React.Component<GridProps, any> {
 
     return (
       <g onMouseLeave={this.onMatrixMouseLeave}>
-        <rect fill="#eee" width={width} height={height} />
+        <rect className="grid-background" width={width} height={height} />
         <HoverHighlightGroup
           x={this.state.highlightX}
           y={this.state.highlightY}

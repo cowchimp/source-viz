@@ -4,7 +4,7 @@ import { rowGridMargin } from './constants';
 export function Row({ label, y, width, cellHeight }) {
   return (
     <g className="row" transform={'translate(0,' + y + ')'}>
-      <line stroke="#fff" x2={width} />
+      <line x2={width} />
       <text
         x={-rowGridMargin}
         y={cellHeight / 2}

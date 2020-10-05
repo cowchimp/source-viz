@@ -5,7 +5,7 @@ import { columnGridMargin } from './constants';
 export function Column({ label, type, x, height, cellWidth }) {
   return (
     <g className="column" transform={'translate(' + x + ')rotate(-90)'}>
-      <line stroke="#fff" x1={-height} />
+      <line x1={-height} />
       <text
         x={columnGridMargin}
         y={cellWidth / 2}
