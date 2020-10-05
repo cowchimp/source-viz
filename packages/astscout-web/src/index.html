@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.18.2/lib/codemirror.css" />
     <style type="text/css">
-      .description, .mode, .controls { font-family:'Roboto',sans-serif; }
+      .description, .mode, .controls, .error { font-family:'Roboto',sans-serif; }
       button, h1 { padding: 0; border: none; font: inherit; color: inherit; background-color: transparent; }
       .code { font-family: 'Lucida Console', Monaco, 'Courier New', Courier, monospace; }
       .top { width: 700px; }
@@ -23,10 +23,12 @@
       .react-codemirror2 { border: 1px solid #ccc; font-size: 14px; margin-bottom: 12px; }
       .btn,.loc { float: right; padding: 0.5em 1em;  }
       .btn { display: block; border-radius: 4px; min-width: 60px; box-sizing: content-box; color: #FFFFFF; background-color: #708; cursor: pointer; }
+
       .controls { display:flow-root; }
       .control { float:left; margin-right:12px; }
       .hover-target { fill: transparent; }
       .hover-highlight{ fill:#b3b3b3; fill-opacity:0.25; }
+      .error { color: red; }
 
       .grid-background { fill: #eee; }
       .row line, .column line { stroke: #fff; }

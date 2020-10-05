@@ -75,6 +75,7 @@ function getWebviewContent(textEditor: TextEditor, bundleUri: Uri) {
       .row line, .column line { stroke: var(--vscode-editor-background); }
       .hover-target { fill: transparent; }
       .hover-highlight { fill:#b3b3b3; fill-opacity:0.25; }
+      .error { color: var(--vscode-errorForeground); font-size: var(--vscode-font-size); }
     </style>
   </head>
   <body>
