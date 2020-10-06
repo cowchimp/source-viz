@@ -2,12 +2,19 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import type { ExtensionContext, TextEditor, Uri, WebviewPanel } from 'vscode';
 
+let panel: WebviewPanel | undefined;
+
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerTextEditorCommand(
       'astscout-vscode.openAstScout',
       (textEditor) => {
-        const panel = vscode.window.createWebviewPanel(
+        if (panel) {
+          panel.reveal(vscode.ViewColumn.Beside);
+          return;
+        }
+
+        panel = vscode.window.createWebviewPanel(
           'astScoutMain',
           'AST Scout',
           vscode.ViewColumn.Beside,
@@ -22,7 +29,7 @@ export function activate(context: vscode.ExtensionContext) {
 
         const changeTextEditorSubscription = vscode.window.onDidChangeActiveTextEditor(
           (editor) => {
-            if (!editor) {
+            if (!editor || !panel) {
               return;
             }
             panel.webview.html = getWebviewContent(editor, bundleUri);
