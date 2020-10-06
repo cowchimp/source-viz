@@ -9,14 +9,14 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:astscout-vscode.helloWorld"
+    "onCommand:astscout-vscode.openAstScout"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "astscout-vscode.helloWorld",
-        "title": "Hello World"
+        "command": "astscout-vscode.openAstScout",
+        "title": "Open AST Scout"
       }
     ]
   },

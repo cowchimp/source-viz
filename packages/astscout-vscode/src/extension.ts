@@ -1,32 +1,18 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import * as path from 'path';
 import type { Uri, ExtensionContext, WebviewPanel, TextEditor } from 'vscode';
 
-// your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-  // Use the console to output diagnostic information (console.log) and errors (console.error)
-  // This line of code will only be executed once when your extension is activated
-  console.log(
-    'Congratulations, your extension "hello-vscode-extension" is now active!',
-  );
-
-  // The command has been defined in the package.json file
-  // Now provide the implementation of the command with registerCommand
-  // The commandId parameter must match the command field in package.json
   let disposable = vscode.commands.registerTextEditorCommand(
-    'astscout-vscode.helloWorld',
+    'astscout-vscode.openAstScout',
     (textEditor) => {
-      // The code you place here will be executed every time your command is executed
-
       const panel = vscode.window.createWebviewPanel(
-        'catCoding', // Identifies the type of the webview. Used internally
-        'AST Scout', // Title of the panel displayed to the user
-        vscode.ViewColumn.Beside, // Editor column to show the new webview panel in.
+        'astScoutMain',
+        'AST Scout',
+        vscode.ViewColumn.Beside,
         {
           enableScripts: true,
-        }, // Webview options. More on these later.
+        },
       );
 
       const bundleUri = getBundleUri(context, panel);
@@ -88,6 +74,3 @@ function getWebviewContent(textEditor: TextEditor, bundleUri: Uri) {
 </html>
 `;
 }
-
-// this method is called when your extension is deactivated
-export function deactivate() {}
