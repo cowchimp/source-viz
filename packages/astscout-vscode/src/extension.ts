@@ -1,34 +1,42 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
-import type { Uri, ExtensionContext, WebviewPanel, TextEditor } from 'vscode';
+import type { ExtensionContext, TextEditor, Uri, WebviewPanel } from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
-  let disposable = vscode.commands.registerTextEditorCommand(
-    'astscout-vscode.openAstScout',
-    (textEditor) => {
-      const panel = vscode.window.createWebviewPanel(
-        'astScoutMain',
-        'AST Scout',
-        vscode.ViewColumn.Beside,
-        {
-          enableScripts: true,
-        },
-      );
+  context.subscriptions.push(
+    vscode.commands.registerTextEditorCommand(
+      'astscout-vscode.openAstScout',
+      (textEditor) => {
+        const panel = vscode.window.createWebviewPanel(
+          'astScoutMain',
+          'AST Scout',
+          vscode.ViewColumn.Beside,
+          {
+            enableScripts: true,
+          },
+        );
 
-      const bundleUri = getBundleUri(context, panel);
+        const bundleUri = getBundleUri(context, panel);
 
-      panel.webview.html = getWebviewContent(textEditor, bundleUri);
+        panel.webview.html = getWebviewContent(textEditor, bundleUri);
 
-      vscode.window.onDidChangeActiveTextEditor((editor) => {
-        if (!editor) {
-          return;
-        }
-        panel.webview.html = getWebviewContent(editor, bundleUri);
-      });
-    },
+        const changeTextEditorSubscription = vscode.window.onDidChangeActiveTextEditor(
+          (editor) => {
+            if (!editor) {
+              return;
+            }
+            panel.webview.html = getWebviewContent(editor, bundleUri);
+          },
+        );
+
+        panel.onDidDispose(
+          () => changeTextEditorSubscription.dispose(),
+          null,
+          context.subscriptions,
+        );
+      },
+    ),
   );
-
-  context.subscriptions.push(disposable);
 }
 
 function getBundleUri(context: ExtensionContext, panel: WebviewPanel) {
