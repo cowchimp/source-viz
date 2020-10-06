@@ -20,6 +20,7 @@ export function activate(context: vscode.ExtensionContext) {
           vscode.ViewColumn.Beside,
           {
             enableScripts: true,
+            retainContextWhenHidden: true,
           },
         );
 
