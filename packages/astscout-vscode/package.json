@@ -2,6 +2,7 @@
   "name": "astscout-vscode",
   "displayName": "Hello VSCode Extension",
   "version": "1.4.0",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.49.0"
   },
