@@ -6,7 +6,7 @@ const pkg = require('../../package.json');
 export function Title() {
   return (
     <h1 className="title code">
-      {'\u{269C}'} AST Scout{' '}
+      {'\u{269C}'} Source Viz{' '}
       <span style={{ fontSize: '50%' }}>(v {pkg.version})</span>
       <GithubLogo />
     </h1>

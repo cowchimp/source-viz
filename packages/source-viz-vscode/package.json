@@ -1,5 +1,5 @@
 {
-  "name": "astscout-vscode",
+  "name": "source-viz-vscode",
   "displayName": "Hello VSCode Extension",
   "version": "1.4.0",
   "icon": "icon.png",
@@ -10,14 +10,14 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:astscout-vscode.openAstScout"
+    "onCommand:source-viz-vscode.openSourceViz"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "astscout-vscode.openAstScout",
-        "title": "Open AST Scout"
+        "command": "source-viz-vscode.openSourceViz",
+        "title": "Open Source Viz"
       }
     ]
   },
@@ -27,7 +27,7 @@
     "watch": "tsc -watch -p ./"
   },
   "dependencies": {
-    "astscout-vscode-web": "1.4.0"
+    "source-viz-vscode-web": "1.4.0"
   },
   "devDependencies": {
     "@types/vscode": "^1.49.0",

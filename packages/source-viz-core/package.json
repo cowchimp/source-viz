@@ -1,5 +1,5 @@
 {
-  "name": "astscout-core",
+  "name": "source-viz-core",
   "private": true,
   "version": "1.4.0",
   "main": "src/index.ts",

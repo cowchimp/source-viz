@@ -31,8 +31,8 @@ export function CodeMatrix(props: CodeMatrixProps) {
     if (!members.length) {
       return (
         <Error>
-          Couldn't parse code. If this is a file AST Scout should support please
-          open an issue at{' '}
+          Couldn't parse code. If this is a file Source Viz should support
+          please open an issue at{' '}
           <a href="https://github.com/cowchimp/astscout">
             https://github.com/cowchimp/astscout
           </a>

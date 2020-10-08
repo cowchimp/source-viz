@@ -1,22 +1,32 @@
 {
-  "name": "astscout-vscode-web",
+  "name": "source-viz-web",
   "version": "1.4.0",
+  "author": {
+    "name": "cowchimp",
+    "url": "http://blog.cowchimp.com"
+  },
+  "repository": "cowchimp/astscout",
   "scripts": {
     "start": "webpack -w --mode development --output ./dist/bundle.js --devtool inline-source-map",
-    "build": "webpack --mode production --output ./dist/bundle.js"
+    "build": "webpack --mode production --output ./dist/bundle.[hash].js"
   },
   "dependencies": {
-    "astscout-core": "1.4.0",
+    "source-viz-core": "1.4.0",
+    "codemirror": "^5.18.2",
     "react": "^16.3.2",
+    "react-codemirror2": "^5.1.0",
     "react-dom": "^16.3.2"
   },
   "devDependencies": {
     "@types/react": "^16.3.12",
     "@types/react-dom": "^16.0.5",
     "clean-webpack-plugin": "^3.0.0",
+    "html-loader": "^1.3.0",
+    "html-webpack-plugin": "^4.4.1",
     "ts-loader": "^8.0.3",
     "typescript": "^3.9.7",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
-  }
+  },
+  "license": "MIT"
 }

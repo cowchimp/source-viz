@@ -7,7 +7,7 @@ let panel: WebviewPanel | undefined;
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerTextEditorCommand(
-      'astscout-vscode.openAstScout',
+      'source-viz-vscode.openSourceViz',
       (textEditor) => {
         if (panel) {
           panel.reveal(vscode.ViewColumn.Beside);
@@ -15,8 +15,8 @@ export function activate(context: vscode.ExtensionContext) {
         }
 
         panel = vscode.window.createWebviewPanel(
-          'astScoutMain',
-          'AST Scout',
+          'sourceVizMain',
+          'Source Viz',
           vscode.ViewColumn.Beside,
           {
             enableScripts: true,
@@ -50,7 +50,7 @@ export function activate(context: vscode.ExtensionContext) {
 function getBundleUri(context: ExtensionContext, panel: WebviewPanel) {
   const fullPath = path.join(
     context.extensionPath,
-    'node_modules/astscout-vscode-web/dist/bundle.js',
+    'node_modules/source-viz-vscode-web/dist/bundle.js',
   );
   const uri = vscode.Uri.file(fullPath);
   const bundleUri = panel.webview.asWebviewUri(uri);

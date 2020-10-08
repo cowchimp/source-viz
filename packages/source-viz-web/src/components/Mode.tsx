@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AnalysisMode } from 'astscout-core';
+import { AnalysisMode } from 'source-viz-core';
 
 interface ModeProps {
   value: AnalysisMode;

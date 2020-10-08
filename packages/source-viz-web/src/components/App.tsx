@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SourcePanel } from './SourcePanel';
-import { AnalysisMode, CodeMatrix } from 'astscout-core';
+import { AnalysisMode, CodeMatrix } from 'source-viz-core';
 import { examples } from '../examples';
 import { Description } from './Description';
 import { Title } from './Title';

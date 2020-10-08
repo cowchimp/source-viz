@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AnalysisMode, CodeMatrix } from 'astscout-core';
+import { AnalysisMode, CodeMatrix } from 'source-viz-core';
 
 export function App() {
   // @ts-ignore

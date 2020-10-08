@@ -1,4 +1,4 @@
-import { AnalysisMode } from 'astscout-core';
+import { AnalysisMode } from 'source-viz-core';
 
 export const examples = {
   [AnalysisMode.class]: `class Foo {

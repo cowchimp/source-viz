@@ -4,7 +4,7 @@ export function Description() {
   return (
     <div className="description">
       <p>
-        AST Scout is a tool for analyzing and visualizing the relationship
+        Source Viz is a tool for analyzing and visualizing the relationship
         between the public API of a Class\Module and its implementations details
         (e.g. private methods, dependencies used).
       </p>
