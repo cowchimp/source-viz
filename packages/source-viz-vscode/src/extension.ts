@@ -48,10 +48,7 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 function getBundleUri(context: ExtensionContext, panel: WebviewPanel) {
-  const fullPath = path.join(
-    context.extensionPath,
-    'node_modules/source-viz-vscode-web/dist/bundle.js',
-  );
+  const fullPath = path.join(context.extensionPath, 'public/dist/bundle.js');
   const uri = vscode.Uri.file(fullPath);
   const bundleUri = panel.webview.asWebviewUri(uri);
   return bundleUri;

@@ -23,20 +23,31 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "npm run build",
-    "build": "tsc -p ./",
-    "watch": "tsc -watch -p ./"
+    "vscode:prepublish": "yarn run build",
+    "build": "yarn run extension:build && yarn run public:build",
+    "extension:build": "tsc -p ./",
+    "extension:watch": "tsc -watch -p ./",
+    "public:start": "cd public && webpack -w --mode development --output ./dist/bundle.js --devtool inline-source-map",
+    "public:build": "cd public && webpack --mode production --output ./dist/bundle.js"
   },
   "dependencies": {
-    "source-viz-vscode-web": "0.1.0"
+    "source-viz-core": "0.1.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
   },
   "devDependencies": {
+    "@types/react": "^16.3.12",
+    "@types/react-dom": "^16.0.5",
     "@types/vscode": "^1.49.0",
     "@types/glob": "^7.1.3",
     "@types/node": "^14.0.27",
+    "clean-webpack-plugin": "^3.0.0",
     "glob": "^7.1.6",
+    "ts-loader": "^8.0.3",
     "typescript": "^3.9.7",
-    "vscode-test": "^1.4.0"
+    "vscode-test": "^1.4.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
   },
   "license": "MIT"
 }

@@ -3,7 +3,6 @@
   "compilerOptions": {
     "target": "es6",
     "lib": ["es6"],
-    "rootDir": "src",
     "outDir": "out",
     "strict": true /* enable all strict type-checking options */
     /* Additional Checks */
@@ -11,5 +10,5 @@
     // "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
     // "noUnusedParameters": true,  /* Report errors on unused parameters. */
   },
-  "exclude": ["node_modules", ".vscode-test"]
+  "files": ["src/extension.ts"]
 }
