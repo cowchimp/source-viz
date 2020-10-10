@@ -28,7 +28,8 @@
     "extension:build": "tsc -p ./",
     "extension:watch": "tsc -watch -p ./",
     "public:start": "cd public && webpack -w --mode development --output ./dist/bundle.js --devtool inline-source-map",
-    "public:build": "cd public && webpack --mode production --output ./dist/bundle.js"
+    "public:build": "cd public && webpack --mode production --output ./dist/bundle.js",
+    "deploy": "vsce publish --yarn"
   },
   "dependencies": {
     "source-viz-core": "0.1.0",
@@ -45,6 +46,7 @@
     "glob": "^7.1.6",
     "ts-loader": "^8.0.3",
     "typescript": "^3.9.7",
+    "vsce": "^1.81.1",
     "vscode-test": "^1.4.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"

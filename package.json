@@ -6,7 +6,8 @@
   ],
   "scripts": {
     "build": "lerna run build",
-    "test": "lerna run test"
+    "test": "lerna run test",
+    "deploy": "lerna run deploy"
   },
   "devDependencies": {
     "lerna": "^3.22.1",
