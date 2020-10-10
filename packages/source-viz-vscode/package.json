@@ -3,6 +3,7 @@
   "displayName": "Source Viz",
   "version": "0.1.1",
   "publisher": "cowchimp",
+  "repository": "cowchimp/source-viz",
   "engines": {
     "vscode": "^1.49.0"
   },
