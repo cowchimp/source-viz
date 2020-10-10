@@ -1,13 +1,14 @@
 {
   "name": "source-viz-vscode",
-  "displayName": "Hello VSCode Extension",
+  "displayName": "Source Viz",
   "version": "0.1.0",
-  "icon": "icon.png",
+  "publisher": "cowchimp",
   "engines": {
     "vscode": "^1.49.0"
   },
+  "icon": "icon.png",
   "categories": [
-    "Other"
+    "Visualization"
   ],
   "activationEvents": [
     "onCommand:source-viz-vscode.openSourceViz"
@@ -36,5 +37,6 @@
     "glob": "^7.1.6",
     "typescript": "^3.9.7",
     "vscode-test": "^1.4.0"
-  }
+  },
+  "license": "MIT"
 }
