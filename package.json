@@ -1,10 +1,12 @@
 {
   "name": "root",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "lerna run build",
-    "test": "lerna run test",
-    "postinstall": "lerna bootstrap --hoist"
+    "test": "lerna run test"
   },
   "devDependencies": {
     "lerna": "^3.22.1",
