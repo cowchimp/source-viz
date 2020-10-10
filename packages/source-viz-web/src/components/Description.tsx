@@ -37,7 +37,7 @@ export function Description() {
       </p>
       <p>
         Feel free to open up an issue on{' '}
-        <a href="https://www.github.com/cowchimp/astscout" target="_blank">
+        <a href="https://www.github.com/cowchimp/source-viz" target="_blank">
           github
         </a>{' '}
         or reach out on{' '}

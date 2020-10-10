@@ -33,8 +33,8 @@ export function CodeMatrix(props: CodeMatrixProps) {
         <Error>
           Couldn't parse code. If this is a file Source Viz should support
           please open an issue at{' '}
-          <a href="https://github.com/cowchimp/astscout">
-            https://github.com/cowchimp/astscout
+          <a href="https://github.com/cowchimp/source-viz">
+            https://github.com/cowchimp/source-viz
           </a>
           .
         </Error>
@@ -57,8 +57,8 @@ function InternalError({ e }) {
       Error message: {e.message}
       <br />
       Please open an issue at{' '}
-      <a href="https://github.com/cowchimp/astscout">
-        https://github.com/cowchimp/astscout
+      <a href="https://github.com/cowchimp/source-viz">
+        https://github.com/cowchimp/source-viz
       </a>
       .
     </Error>

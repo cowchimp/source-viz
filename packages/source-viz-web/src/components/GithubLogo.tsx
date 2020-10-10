@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export function GithubLogo() {
   return (
-    <a href="https://www.github.com/cowchimp/astscout" target="_blank">
+    <a href="https://www.github.com/cowchimp/source-viz" target="_blank">
       <svg
         height="24"
         width="24"
