@@ -1,6 +1,6 @@
 {
   "name": "source-viz-web",
-  "version": "1.4.0",
+  "version": "0.1.0",
   "author": {
     "name": "cowchimp",
     "url": "http://blog.cowchimp.com"
@@ -11,7 +11,7 @@
     "build": "webpack --mode production --output ./dist/bundle.[hash].js"
   },
   "dependencies": {
-    "source-viz-core": "1.4.0",
+    "source-viz-core": "0.1.0",
     "codemirror": "^5.18.2",
     "react": "^16.3.2",
     "react-codemirror2": "^5.1.0",

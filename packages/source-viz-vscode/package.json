@@ -1,7 +1,7 @@
 {
   "name": "source-viz-vscode",
   "displayName": "Hello VSCode Extension",
-  "version": "1.4.0",
+  "version": "0.1.0",
   "icon": "icon.png",
   "engines": {
     "vscode": "^1.49.0"
@@ -27,7 +27,7 @@
     "watch": "tsc -watch -p ./"
   },
   "dependencies": {
-    "source-viz-vscode-web": "1.4.0"
+    "source-viz-vscode-web": "0.1.0"
   },
   "devDependencies": {
     "@types/vscode": "^1.49.0",

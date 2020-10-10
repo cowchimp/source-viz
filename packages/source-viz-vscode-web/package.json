@@ -1,12 +1,12 @@
 {
   "name": "source-viz-vscode-web",
-  "version": "1.4.0",
+  "version": "0.1.0",
   "scripts": {
     "start": "webpack -w --mode development --output ./dist/bundle.js --devtool inline-source-map",
     "build": "webpack --mode production --output ./dist/bundle.js"
   },
   "dependencies": {
-    "source-viz-core": "1.4.0",
+    "source-viz-core": "0.1.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"
   },
