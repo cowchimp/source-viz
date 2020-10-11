@@ -5,13 +5,13 @@ import { analyzeModuleSource } from '../core/parsers/typescript/module-based/ana
 import { ConfigurableMatrix } from './ConfigurableMatrix';
 import { ErrorBoundary } from './ErrorBoundary';
 
-interface CodeMatrixProps {
+interface SourceMatrixProps {
   mode: AnalysisMode;
-  code: string;
+  source: string;
 }
 
-export function CodeMatrix(props: CodeMatrixProps) {
-  if (!props.code) {
+export function SourceMatrix(props: SourceMatrixProps) {
+  if (!props.source) {
     return null;
   }
 
@@ -19,10 +19,10 @@ export function CodeMatrix(props: CodeMatrixProps) {
     let members;
     switch (props.mode) {
       case 'class':
-        members = analyzeClassSource(props.code);
+        members = analyzeClassSource(props.source);
         break;
       case 'module':
-        members = analyzeModuleSource(props.code);
+        members = analyzeModuleSource(props.source);
         break;
       default:
         members = [];

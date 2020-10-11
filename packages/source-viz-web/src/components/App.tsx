@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SourcePanel } from './SourcePanel';
-import { AnalysisMode, CodeMatrix } from 'source-viz-core';
+import { AnalysisMode, SourceMatrix } from 'source-viz-core';
 import { examples } from '../examples';
 import { Description } from './Description';
 import { Title } from './Title';
@@ -57,7 +57,7 @@ export class App extends React.Component<any, AppState> {
             onAnalyze={this.onAnalyze}
           />
         </div>
-        <CodeMatrix code={this.state.code} mode={this.state.mode} />
+        <SourceMatrix source={this.state.code} mode={this.state.mode} />
       </div>
     );
   }
