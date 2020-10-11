@@ -17,7 +17,7 @@ export class App extends React.Component<any, AppState> {
   constructor(props) {
     super(props);
 
-    const defaultMode = AnalysisMode.class;
+    const defaultMode = AnalysisMode.module;
     this.state = {
       mode: defaultMode,
       initialCode: examples[defaultMode],

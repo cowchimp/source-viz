@@ -5,12 +5,12 @@ export function Description() {
     <div className="description">
       <p>
         Source Viz is a tool for analyzing and visualizing the relationship
-        between the public API of a Class\Module and its implementations details
+        between the public API of a Module\Class and its implementations details
         (e.g. private methods, dependencies used).
       </p>
       <p>
         Ideally this visualization can help you spot logical split-points in a
-        huge Class\Module file by highlighting how one set of public methods
+        huge Module\Class file by highlighting how one set of public methods
         uses completely different code than a different set.
       </p>
       <p>
