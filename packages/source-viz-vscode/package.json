@@ -1,5 +1,6 @@
 {
   "name": "source-viz-vscode",
+  "private": true,
   "displayName": "Source Viz",
   "version": "0.2.3",
   "publisher": "cowchimp",

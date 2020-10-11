@@ -1,5 +1,6 @@
 {
   "name": "source-viz-web",
+  "private": true,
   "version": "0.2.3",
   "author": {
     "name": "cowchimp",
