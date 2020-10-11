@@ -8,7 +8,8 @@
   "repository": "cowchimp/source-viz",
   "scripts": {
     "start": "webpack -w --mode development --output ./dist/bundle.js --devtool inline-source-map",
-    "build": "webpack --mode production --output ./dist/bundle.[hash].js"
+    "build": "webpack --mode production --output ./dist/bundle.[hash].js",
+    "deploy": "netlify deploy --dir=dist --prod"
   },
   "dependencies": {
     "codemirror": "^5.18.2",
@@ -23,6 +24,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "html-loader": "^1.3.0",
     "html-webpack-plugin": "^4.4.1",
+    "netlify-cli": "^2.65.5",
     "ts-loader": "^8.0.3",
     "typescript": "^3.9.7",
     "webpack": "^4.44.2",
