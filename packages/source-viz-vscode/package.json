@@ -3,7 +3,7 @@
   "private": true,
   "displayName": "Source Viz",
   "description": "A tool for visualizing the relationship between a module's public API and its implementation details",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "publisher": "cowchimp",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   "dependencies": {
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "source-viz-core": "^0.2.5"
+    "source-viz-core": "^0.2.6"
   },
   "devDependencies": {
     "@types/glob": "^7.1.3",
