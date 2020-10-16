@@ -5,7 +5,7 @@ export function Description() {
     <div className="description">
       <p>
         Source Viz is a tool for analyzing and visualizing the relationship
-        between the public API of a Module\Class and its implementations details
+        between the public API of a Module\Class and its implementation details
         (e.g. private methods, dependencies used).
       </p>
       <p>

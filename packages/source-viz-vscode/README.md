@@ -1,6 +1,4 @@
-# Source Viz
-
-Source Viz is a VSCode extension for visualizing the relationship between a module's public API its implementations details.  
+Source Viz is a VSCode extension for visualizing the relationship between a module's public API and its implementation details.  
 
 You can use it to
 * Make changes with confidence

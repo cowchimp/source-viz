@@ -2,7 +2,7 @@
   "name": "source-viz-vscode",
   "private": true,
   "displayName": "Source Viz",
-  "description": "A VSCode extension for visualizing the relationship between a module's public API its implementations details",
+  "description": "A tool for visualizing the relationship between a module's public API and its implementation details",
   "version": "0.2.5",
   "publisher": "cowchimp",
   "repository": {
@@ -35,7 +35,7 @@
     "extension:watch": "tsc -watch -p ./",
     "public:start": "cd public && webpack -w --mode development --output ./dist/bundle.js --devtool inline-source-map",
     "public:build": "cd public && webpack --mode production --output ./dist/bundle.js",
-    "deploy": "vsce publish --yarn"
+    "deploy": "vsce publish --yarn --baseImagesUrl=https://github.com/cowchimp/source-viz/raw/master/packages/source-viz-vscode"
   },
   "dependencies": {
     "react": "^16.3.2",
