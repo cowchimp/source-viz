@@ -2,6 +2,7 @@
   "name": "source-viz-vscode",
   "private": true,
   "displayName": "Source Viz",
+  "description": "A VSCode extension for visualizing the relationship between a module's public API its implementations details",
   "version": "0.2.4",
   "publisher": "cowchimp",
   "repository": {
