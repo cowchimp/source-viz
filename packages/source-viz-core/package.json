@@ -1,7 +1,7 @@
 {
   "name": "source-viz-core",
   "private": true,
-  "version": "0.2.7",
+  "version": "0.2.8",
   "main": "src/index.ts",
   "scripts": {
     "test": "jest"
