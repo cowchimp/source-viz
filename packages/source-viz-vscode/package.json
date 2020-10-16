@@ -13,6 +13,10 @@
     "vscode": "^1.49.0"
   },
   "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#708",
+    "theme": "dark"
+  },
   "categories": [
     "Visualization"
   ],
