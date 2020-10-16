@@ -22,7 +22,7 @@ The results are displayed in an [Adjacency Matrix](https://en.wikipedia.org/wiki
 
 * The **rows** represent the module's public API.  
   These would be its exported functions.
-* The **columns** represent the module's internal implementation
+* The **columns** represent the module's internal implementation  
   These would be:
   * 🔐 Non-exported (private) functions
   * 📦 Imported members (dependencies)
