@@ -3,7 +3,7 @@
   "private": true,
   "displayName": "Source Viz",
   "description": "A VSCode extension for visualizing the relationship between a module's public API its implementations details",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "publisher": "cowchimp",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   "dependencies": {
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "source-viz-core": "^0.2.4"
+    "source-viz-core": "^0.2.5"
   },
   "devDependencies": {
     "@types/glob": "^7.1.3",
