@@ -39,7 +39,7 @@
     "extension:watch": "tsc -watch -p ./",
     "public:start": "cd public && webpack -w --mode development --output ./dist/bundle.js --devtool inline-source-map",
     "public:build": "cd public && webpack --mode production --output ./dist/bundle.js",
-    "deploy": "vsce publish --yarn --baseImagesUrl=https://github.com/cowchimp/source-viz/raw/master/packages/source-viz-vscode"
+    "deploy": "vsce publish --yarn"
   },
   "dependencies": {
     "react": "^16.3.2",
