@@ -4,7 +4,10 @@
   "displayName": "Source Viz",
   "version": "0.2.4",
   "publisher": "cowchimp",
-  "repository": "cowchimp/source-viz",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cowchimp/source-viz.git"
+  },
   "engines": {
     "vscode": "^1.49.0"
   },
