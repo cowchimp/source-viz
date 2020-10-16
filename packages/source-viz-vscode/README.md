@@ -16,13 +16,13 @@ Press Cmd\Ctrl+Shift+P and select "Open Source Viz" to see the diagram of the fi
 
 ## Interpreting the results
 
-The results are displayed in an [https://en.wikipedia.org/wiki/Adjacency_matrix](Adjacency Matrix).
+The results are displayed in an [Adjacency Matrix](https://en.wikipedia.org/wiki/Adjacency_matrix).
 
 ![Annotated example matrix](images/annotated-example-matrix.png)
 
 * The **rows** represent the module's public API.  
   These would be its exported functions.
-* The **columns** represent the module's internal implementations
+* The **columns** represent the module's internal implementation
   These would be:
-  * 🔐 Non-exported functions
+  * 🔐 Non-exported (private) functions
   * 📦 Imported members (dependencies)
